@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+nav.navbar{
+    padding: 20px;
+}
+.head_logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.head_logo img{
+    width: 17%;
+}

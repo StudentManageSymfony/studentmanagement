@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Account{% endblock %}
+
+
+<div class="head_logo">
+    <img src="../img/2022-Greenwich-Eng.png" alt="Logo">
+</div>
+<nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #2C74B3;">
+    <a id="Logo" href="#" class="navbar-brand">
+        Greenwich Clubs
+        <!-- <img src="../ASM2/Images/ESC Logo (1)-02.png" alt="" style="height: 50px; width: 50px;"> -->
+    </a>
+    <style>
+        *{
+            font-family:'Quicksand', sans-serif !important;
+        }
+        body{
+            font-weight: 500 !important;
+        }
+        #Logo.navbar-brand{
+            padding-left: 20px;
+        }
+        nav.navbar{
+            font-weight: 600;
+        }
+    </style>
+    <button style="color:#000" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+        <span class="bi bi-list"></span>
+    </button>
+        <style>
+            .dropdown:hover .dropdown-menu{
+                display: block;
+            }
+            .navbar-toggler{
+                color: #000;
+            }
+        </style>
+
+<div class="collapse navbar-collapse justify-content-center" id="navbarMain">
+    <div class="navbar-nav">
+        <a class="nav-link active" href="../html/homepage.html">Home</a>
+        <a href="../html/clubs.html" class="nav-link" style="color: #ffffff;">Clubs</a>
+        <a href="../html/members.html" class="nav-link" style="color: #ffffff;">Members</a>
+        <a class="nav-link" href="../html/check-in.html" style="color: #ffffff;">Check-in</a>
+        <a class="nav-link" href="../html/attendance.html" style="color: #ffffff;">Attendance</a>
+        <a class="nav-link" href="../html/activities.html"style="color: #ffffff;">Activities</a>
+        <a class="nav-link" href="../html/account.html"style="color: #ffffff;">Account</a>
+    </div>
+</div>
+
+    <a href="#" class="nav-item nav-link">Welcome ...</a>
+    <a href="../html/index.html" class="nav-item nav-link">Logout</a>
+</nav>
+
+{% block body %}
+    <div class="heading">
+        <h4>ACCOUNT INFORMATION</h4>
+    </div>
+    <div class="cover"> 
+        <div class="pr">
+            <form class="row g-3">
+                <div class="col-md-6">
+                    <label for="inputId" class="form-label">Member ID</label>
+                    {# <input type="email" class="form-control" id="inputId" readonly> #}
+                    {{ form_widget(formname, {'attr':{'type':'email'}, {'class':'form-control'}, {'id':'inputId'} {'readonly'} }) }}
+                </div>
+                <div class="col-md-6">
+                    <label for="inputName" class="form-label">Member Name</label>
+                    {# <input type="text" class="form-control" id="inputName" readonly> #}
+                    {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'form-control'}, {'id':'inputName'}, {'readonly'} }) }}
+                </div>
+                <div class="col-6">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    {# <input type="email" class="form-control" id="inputEmail" placeholder="Ex: datdmgcc21047@fpt.ed.vn"> #}
+                    {{ form_widget(formname, {'attr':{'type':'email'}, {'class':'form-control'}, {'id':'inputEmail'}, {'placeholder':'Ex: datdmgcc21047@fpt.ed.vn'} }) }}
+                </div>
+                <div class="col-6">
+                    <label for="inputDate" class="form-label">Date of Birth</label>
+                    {# <input type="date" class="form-control" id="inputDate"> #}
+                    {{ form_widget(formname, {'attr':{'type':'date'}, {'class':'form-control'}, {'id':'inputDate'} }) }}
+                </div>
+                <div class="col-6">
+                    <label for="inputMajor" class="form-label">Major</label>
+                    <select id="inputMajor" class="form-select">
+                        <option selected>Choose...</option>
+                        <option value="0">SE - Computing</option>
+                        <option value="1">BA - Event</option>
+                        <option value="2">BA - Business</option>
+                        <option value="3">BA - Marketing</option>
+                        <option value="4">GD - Graphic Design</option>
+                        <option value="5">PDP - Student Service</option>
+                    </select>
+                </div>
+                <!-- Check -->
+                <div class="check col-md-6">
+                    Gender
+                    <div class="check-box">
+                        <div class="form-check col-2">
+                            {# <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"> #}
+                            {{ form_widget(formname, {'attr':{'type':'radio'}, {'class':'form-check-input'}, {'id':'flexRadioDefault1'}, {'name':'flexRadioDefault'} }) }}
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check col-2">
+                            {# <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> #}
+                            {{ form_widget(formname, {'attr':{'type':'radio'}, {'class':'form-check-input'}, {'id':'flexRadioDefault2'}, {'name':'flexRadioDefault'} }) }}
+
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <button type="submit" class="btn btn-primary btn-lg" style="width: 50%;">Confirm</button>
+                </div>
+                <a href="../html/password-change.html" style="text-decoration: none; text-align: center; color: #FF7000;">
+                    <h6>Do you want to change your password?</h6>
+                </a>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+<footer class="mainfooter" role="contentinfo">
+    <div class="footer-middle">
+        <div class="container">
+        <div class="row">
+            <h4 class="title text-uppercase">Can Tho Campus</h4>
+            <div class="col-md-5 col-sm-6">
+                <!--Column1-->
+                <div class="footer-pad">
+                    <h4 class="text-uppercase">Greenwich Vietnam</h4>
+                    <p><i class="bi bi-telephone-fill"></i><a> Phone: 0907 297 396</a></p>
+                    <p><i class="bi bi-facebook"></i><a> Facebook: Greenwich Vietnam</a></p>
+                    <p><i class="bi bi-telephone-fill"></i><a> Website: greenwich.edu.vn</a></p>
+                    <p><i class="bi bi-geo-alt-fill"></i><a> Address: 160 30/4 Street, An Phu Ward, Ninh Kieu District, Cantho City, Viet Nam</a></p>
+                </div>
+            </div>
+                <div class="col-md-3 col-sm-6">
+                <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="text-uppercase">Contact information</h4>
+                        <p>Email Admin: dangph5@fe.edu.vn</p>
+                        <p>Phone Admin: 0336337022</p>
+                        <p>Email Web Creater: datdmgcc210147</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                <!--Column1-->
+                    <div class="footer-pad">
+                        <h4 class="text-uppercase">About us</h4>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, dignissimos pariatur iste qui tenetur tempore voluptatibus neque architecto, modi, minus id nulla. A eos dignissimos eveniet aliquam nam! Possimus, dignissimos?</p>
+                    </div>
+                </div>
+        </div>
+                <div class="row">
+                    <div class="col-md-12 copy">
+                    <p class="text-center">&copy; Copyright - Greenwich Vietnam | Can Tho Campus | All rights reserved.</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+</footer>

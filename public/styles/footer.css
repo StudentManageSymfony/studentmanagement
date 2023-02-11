@@ -1,0 +1,36 @@
+:root{
+    --green_light: #91D8E4;
+    --green_heavy: #227C70;
+    --blue: #2C74B3;
+    --blue_green: #579BB1;
+    --white: #ffffff;
+    --black: #000000;
+}
+footer{
+    background: var(--blue) !important;
+    color: white;
+    margin-top:100px;
+}
+  
+.copy {
+    font-size: 12px;
+    padding: 10px;
+    border-top: 1px solid #FFFFFF;
+}
+  
+.footer-middle {
+    padding-top: 2em;
+    color: white;
+}
+  
+.social-network a {
+    background-color: #F9F9F9;
+}
+
+footer .title{
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--white);
+}
+.container h4{
+    font-weight: bold;
+}

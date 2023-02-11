@@ -1,0 +1,123 @@
+:root{
+    --Orange_yellow: #FFC93C;
+    --blue_light: #03e9f4;
+    --blue_heavy: #2C74B3;
+    --blue_neon: #5e98a2;
+    --white: #ffffff;
+    --black: #000000;
+    --green_heavy_gradient:#227c7064;
+    --green_light: #439a97d0;
+    --Orange: #FF7000;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 15px;    
+}
+.heading h4{
+    font-family:'Quicksand', sans-serif !important;
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.add-members{
+    padding-bottom: 1%;
+}
+.heading{
+    padding: 30px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    width: 100px;
+}
+button.add {
+    padding: 5px 8px;
+    border: unset;
+    border-radius: 15px !important;
+    color: #212121;
+    z-index: 1;
+    background: var(--white);
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+}
+   
+button.add::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: var(--blue_heavy);
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+}
+   
+button.add:hover {
+    color: var(--white);
+}
+   
+button.add:hover::before {
+    width: 100%;
+}
+
+.btn-show{
+    display: grid;
+    grid-template-columns: 50% 35%;
+    /* display: flex; */
+    align-items: center;
+    justify-content: left;
+    padding-left: 12%;
+    padding-bottom: 10px;
+}
+.example1{
+    display: flex;
+}
+.searchTerm{
+    width: 100%;
+    border: 3px solid var(--green_heavy);
+    padding: 5px;
+    height: 36px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 4px 5px #7474743a;
+}
+  
+.searchButton {
+    width: 40px;
+    height: 36px;
+    border: 1px solid var(--green_heavy);
+    background: var(--green_heavy);
+    text-align: center;
+    color: var(--black);
+    border-radius: 10px;
+    cursor: pointer; /*Kiểu con trỏ chuột*/
+    font-size: 20px;
+    box-shadow: 5px 5px 4px 5px #7474743a;
+    margin-left: 10px;
+}
+tr, th, td{
+    text-align: center;
+    vertical-align: middle !important;
+}
+.border-table{
+    margin: 0 70px 0 70px;
+    border-radius: 8px;
+    border: 3px solid var(--blue_heavy);
+}
+h4{
+    text-align: center;
+}
