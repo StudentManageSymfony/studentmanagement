@@ -2,37 +2,46 @@
 
 {% block title %}Clubs Management{% endblock %}
 
-{% block body %}
 
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{asset('styles/index-style.css')}}" type="text/css">
+{% endblock %}
+
+
+{% block body %}
+  <div>
+    <img src="../images/VNT_University-of-Greenwich-2-1024x511.jpg" alt="Logo" style="background-size: cover;">
     <div class="login-box">
         <div class="head-form">
             <div class="logo">
-                <img src="../img/2022-Greenwich-Eng.png" alt="Logo">
+                <img src="../images/2022-Greenwich-Eng.png" alt="Logo">
             </div>
             <h2>WELCOME TO GREENWICH VIETNAM</h2>
         </div>
 
-        {# <form> #}
-        {{ form_start(index_form) }}
+        <form>
+        {# {{ form_start(index_form) }} #}
           <div class="user-box">
-            {# <input type="text" name="" id="" required=""> #}
-            {{ form_widget(index_form.username, {'attr':{'type':'text'}, {'require':'true'} }) }}
+            <input type="text" name="" id="" required="">
+            {# {{ form_widget(index_form.username, {'attr':{'type':'text'}, {'require':'true'} }) }} #}
             <label>Username</label>
           </div>
           <div class="user-box">
-            {# <input type="password" name="" id="" required=""> #}
-            {{ form_widget(index_form.password, {'attr':{'type':'password'}, {'require':'true'} }) }}
+            <input type="password" name="" id="" required="">
+            {# {{ form_widget(index_form.password, {'attr':{'type':'password'}, {'require':'true'} }) }} #}
             <label>Password</label>
           </div>
-          {# <a href="../html/homepage.html">
+          <a href="homepage">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Login
-          </a> #}
-          {{ form_widget(index_form.login) }}
-          {{ form_end(index_form) }}
-        {# </form> #}
+          </a>
+          {# {{ form_widget(index_form.login) }} #}
+          {# {{ form_end(index_form) }} #}
+        </form>
     </div>
+  </div>
 {% endblock %}
