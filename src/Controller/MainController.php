@@ -45,9 +45,9 @@ class MainController extends AbstractController
 
 
     /**
-     * @Route("/index", name="indexPage")
+     * @Route("/index", name="Index")
      */
-    public function indexAction(): Response
+    public function showIndexAction(): Response
     {
         return $this->render('main/index.html.twig', []);
     }
