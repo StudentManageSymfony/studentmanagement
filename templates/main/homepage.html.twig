@@ -1,9 +1,11 @@
 {% extends 'home.html.twig' %}
 
 {% block title %}Home Page{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('styles/homepage-style.css')}}">
 {% endblock %}
+
 {% block body %}
     <!-- Sliders -->
     <div class="banner">
@@ -84,9 +86,8 @@
     <div class="row">
         <div class="col-md-5 mb-3 mb-lg-0 py-2">
             <div class="video">
-                <video controls loop width="100%" autoplay preload="auto">
-                    <source  hrel="https://www.youtube.com/watch?v=9HtsksX0nQo">
-                </video>
+                <iframe controls loop width="100%" autoplay preload="auto" src="https://www.youtube.com/watch?v=9HtsksX0nQo">
+                </iframe>
             </div>
         </div>
         <div class="col-md-7">
