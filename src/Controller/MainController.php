@@ -41,9 +41,6 @@ class MainController extends AbstractController
     //     return $this->render('main/index.html.twig', ['index_form'=> $indexForm->createView()]);
     // }
 
-
-
-
     /**
      * @Route("/index", name="Index")
      */
