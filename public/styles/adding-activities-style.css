@@ -39,7 +39,7 @@ body {
   
 .formbold-form-wrapper {
     margin: 0 auto;
-    max-width: 550px;
+    max-width: 630px;
     width: 100%;
     background: white;
     border: 2px solid var(--blue_neon);
@@ -123,6 +123,7 @@ body {
   
 .formbold-form-input {
     width: 100%;
+    height: auto;
     padding: 13px 22px;
     border-radius: 5px;
     border: 1px solid #DDE3EC;
