@@ -2,8 +2,14 @@
 
 {% block title %}Add Activities{% endblock %}
 
-<div class="head_logo">
-        <img src="../img/2022-Greenwich-Eng.png" alt="Logo">
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/adding-activities-style.css')}}">
+    <link rel="stylesheet" href="{{asset('styles/footer.css')}}">
+{% endblock %}
+
+{% block body %}
+    <div class="head_logo">
+        <img src="../images/2022-Greenwich-Eng.png" alt="Logo">
     </div>
 <nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #2C74B3;">
     <a id="Logo" href="#" class="navbar-brand">
@@ -38,19 +44,21 @@
 
 <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
     <div class="navbar-nav">
-        <a class="nav-link active" href="../html/homepage.html">Home</a>
-        <a href="../html/clubs.html" class="nav-link" style="color: #ffffff;">Clubs</a>
-        <a href="../html/members.html" class="nav-link" style="color: #ffffff;">Members</a>
-        <a class="nav-link" href="../html/check-in.html" style="color: #ffffff;">Check-in</a>
-        <a class="nav-link" href="../html/attendance.html" style="color: #ffffff;">Attendance</a>
-        <a class="nav-link" href="../html/activities.html"style="color: #ffffff;">Activities</a>
-        <a class="nav-link" href="../html/account.html"style="color: #ffffff;">Account</a>
+        <a class="nav-link active" href="homepage">Home</a>
+        <a href="clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
+        <a href="members" class="nav-link" style="color: #ffffff;">Members</a>
+        <a class="nav-link" href="check-in" style="color: #ffffff;">Check-in</a>
+        <a class="nav-link" href="attendance" style="color: #ffffff;">Attendance</a>
+        <a class="nav-link" href="activities"style="color: #ffffff;">Activities</a>
+        <a class="nav-link" href="account"style="color: #ffffff;">Account</a>
     </div>
 </div>
     <a href="#" class="nav-item nav-link">Welcome ...</a>
-    <a href="../html/index.html" class="nav-item nav-link">Logout</a>
+    <a href="index" class="nav-item nav-link">Logout</a>
 </nav>
-{% block body %}
+
+
+
     <div class="title">
         ADD ACTIVITIES
     </div>
@@ -60,8 +68,8 @@
                 <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Event name: </label>
-                    {# <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/> #}
-                    {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }}
+                    <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
+                    {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
                 </div>
                 <div>
                     <label for="" class="formbold-form-label"> Organizer: </label>
@@ -74,36 +82,36 @@
                         </select>
                 </div>
                 </div>
-      
+
                 <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Time start: </label>
-                    {# <input type="time" name="" id="" placeholder=""class="formbold-form-input"/> #}
-                    {{ form_widget(formname, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }}
+                    <input type="time" name="" id="" placeholder=""class="formbold-form-input"/>
+                    {# {{ form_widget(formname, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }} #}
                 </div>
                 <div>
                     <label for="phone" class="formbold-form-label"> Time end: </label>
-                    {# <input type="time" name="" id="" placeholder="" class="formbold-form-input"/> #}
-                    {{ form_widget(formname, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }}
+                    <input type="time" name="" id="" placeholder="" class="formbold-form-input"/>
+                    {# {{ form_widget(formname, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }} #}
                 </div>
             </div>
 
             <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Date: </label>
-                    {# <input type="date" name="" id="" placeholder=""class="formbold-form-input"/> #}
-                    {{ form_widget(formname, {'attr':{'type':'date'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }}
+                    <input type="date" name="" id="" placeholder=""class="formbold-form-input"/>
+                    {# {{ form_widget(formname, {'attr':{'type':'date'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }} #}
                 </div>
                 <div>
                     <label for="" class="formbold-form-label"> Score: </label>
-                    {# <input type="number" min="1" max="20" name="" id="" placeholder="Ex: 7" class="formbold-form-input"/> #}
-                    {{ form_widget(formname, {'attr':{'type':'number'}, {'class':'formbold-form-input'},{'min':'1'}, {'max':'20'}, {'id':''}, {'placeholder':'Ex: 7'}, {'name':''} }) }}
+                    <input type="number" min="1" max="20" name="" id="" placeholder="Ex: 7" class="formbold-form-input"/>
+                    {# {{ form_widget(formname, {'attr':{'type':'number'}, {'class':'formbold-form-input'},{'min':'1'}, {'max':'20'}, {'id':''}, {'placeholder':'Ex: 7'}, {'name':''} }) }} #}
                 </div>
             </div> 
             <div class="formbold-form-label">
                 <label for="image-vertical">Poster: </label>
-                {# <input type="file" name="Pro_image" id="Pro_image" class="form-control" value=""> #}
-                {{ form_widget(formname, {'attr':{'type':'file'}, {'class':'form-control'}, {'id':'Pro_image'}, {'value':''}, {'name':'Pro_image'} }) }}
+                <input type="file" name="Pro_image" id="Pro_image" class="form-control" value="">
+                {# {{ form_widget(formname, {'attr':{'type':'file'}, {'class':'form-control'}, {'id':'Pro_image'}, {'value':''}, {'name':'Pro_image'} }) }} #}
             </div>    
             <button class="formbold-btn">
                 Submit
@@ -111,9 +119,10 @@
         </form>
         </div>
     </div>
-{% endblock %}
 
-<footer class="mainfooter" role="contentinfo">
+
+
+    <footer class="mainfooter" role="contentinfo">
     <div class="footer-middle">
         <div class="container">
         <div class="row">
@@ -153,3 +162,6 @@
         </div>
     </div>
 </footer>
+{% endblock %}
+
+

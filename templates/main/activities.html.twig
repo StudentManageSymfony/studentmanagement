@@ -2,8 +2,14 @@
 
 {% block title %}Clubs Management{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/activities-style.css')}}">
+    <link rel="stylesheet" href="{{asset('styles/footer.css')}}">
+{% endblock %}
+    
+{% block body %}
     <div class="head_logo">
-    <img src="../img/2022-Greenwich-Eng.png" alt="Logo">
+    <img src="../images/2022-Greenwich-Eng.png" alt="Logo">
 </div>
 <nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #2C74B3;">
     <a id="Logo" href="#" class="navbar-brand">
@@ -38,26 +44,28 @@
 
 <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
     <div class="navbar-nav">
-        <a class="nav-link active" href="../html/homepage.html">Home</a>
-        <a href="../html/clubs.html" class="nav-link" style="color: #ffffff;">Clubs</a>
-        <a href="../html/members.html" class="nav-link" style="color: #ffffff;">Members</a>
-        <a class="nav-link" href="../html/check-in.html" style="color: #ffffff;">Check-in</a>
-        <a class="nav-link" href="../html/attendance.html" style="color: #ffffff;">Attendance</a>
-        <a class="nav-link" href="../html/activities.html"style="color: #ffffff;">Activities</a>
-        <a class="nav-link" href="../html/account.html"style="color: #ffffff;">Account</a>
+        <a class="nav-link active" href="homepage">Home</a>
+        <a href="clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
+        <a href="members" class="nav-link" style="color: #ffffff;">Members</a>
+        <a class="nav-link" href="check-in" style="color: #ffffff;">Check-in</a>
+        <a class="nav-link" href="attendance" style="color: #ffffff;">Attendance</a>
+        <a class="nav-link" href="activities"style="color: #ffffff;">Activities</a>
+        <a class="nav-link" href="account"style="color: #ffffff;">Account</a>
     </div>
 </div>
 
     <a href="#" class="nav-item nav-link">Welcome ...</a>
     <a href="../html/index.html" class="nav-item nav-link">Logout</a>
 </nav>
-{% block body %}
+
+
+
     <div class="heading">
         <h2>Exhibition Activities</h2>
     </div>
     <div class="btn-show">
         <div class="add-members">
-            <a href="../html/adding-activities.html"><button class="add"> Add new</button></a>
+            <a href="adding-activities"><button class="add"> Add new</button></a>
         </div>
     </div>
     
@@ -78,7 +86,7 @@
                         </div>
                         <div class="card__content">
                             <div class="card-left pe-4">
-                                <img src="../public/images/111.jpg" alt="">
+                                <img src="../images/111.jpg" alt="">
                             </div>
                             <div class="card-right">
                                 <div class="article">
@@ -115,45 +123,7 @@
                         </div>
                         <div class="card__content">
                             <div class="card-left pe-4">
-                                <img src="../public/images/111.jpg" alt="">
-                            </div>
-                            <div class="card-right">
-                                <div class="article">
-                                    <a style="text-decoration:none" href=""><span>Lorem ipsum dolor sit amet consectetur</span></a>
-                                    <br><br>
-                                </div>
-                                <div class="title">
-                                    <span>Date: </span>January 20th, 2023
-                                    <br>
-                                    <span>Time: </span>13:30-17:00
-                                    <br>
-                                    <span>Organizer: </span>Media Club
-                                    <br>
-                                    <span>Score: </span>7
-                                    <br><br>
-                                    <a style="text-decoration: none;" href="">Click here to register</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-12">
-                    <div class="p-3 border rounded-4">
-                        <div class="navbar-tools d-flex">
-                            <div class="tools flex-grow-1">
-                                <div class="circle"><span class="red box"></span></div>
-                                <div class="circle"><span class="yellow box"></span></div>
-                                <div class="circle"><span class="green box"></span></div>
-                            </div>
-                            <div class="small-nav">
-                                <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
-                                <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
-                            </div>
-                        </div>
-                        <div class="card__content">
-                            <div class="card-left pe-4">
-                                <img src="../img/111.jpg" alt="">
+                                <img src="../images/111.jpg" alt="">
                             </div>
                             <div class="card-right">
                                 <div class="article">
@@ -191,7 +161,45 @@
                         </div>
                         <div class="card__content">
                             <div class="card-left pe-4">
-                                <img src="../img/111.jpg" alt="">
+                                <img src="../images/111.jpg" alt="">
+                            </div>
+                            <div class="card-right">
+                                <div class="article">
+                                    <a style="text-decoration:none" href=""><span>Lorem ipsum dolor sit amet consectetur</span></a>
+                                    <br><br>
+                                </div>
+                                <div class="title">
+                                    <span>Date: </span>January 20th, 2023
+                                    <br>
+                                    <span>Time: </span>13:30-17:00
+                                    <br>
+                                    <span>Organizer: </span>Media Club
+                                    <br>
+                                    <span>Score: </span>7
+                                    <br><br>
+                                    <a style="text-decoration: none;" href="">Click here to register</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-12">
+                    <div class="p-3 border rounded-4">
+                        <div class="navbar-tools d-flex">
+                            <div class="tools flex-grow-1">
+                                <div class="circle"><span class="red box"></span></div>
+                                <div class="circle"><span class="yellow box"></span></div>
+                                <div class="circle"><span class="green box"></span></div>
+                            </div>
+                            <div class="small-nav">
+                                <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
+                                <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
+                            </div>
+                        </div>
+                        <div class="card__content">
+                            <div class="card-left pe-4">
+                                <img src="../images/111.jpg" alt="">
                             </div>
                             <div class="card-right">
                                 <div class="article">
@@ -215,9 +223,9 @@
                 </div>
             </div>
         </div>
-{% endblock %}
 
-<footer class="mainfooter" role="contentinfo">
+
+        <footer class="mainfooter" role="contentinfo">
     <div class="footer-middle">
         <div class="container">
         <div class="row">
@@ -257,3 +265,6 @@
         </div>
     </div>
 </footer>
+{% endblock %}
+
+
