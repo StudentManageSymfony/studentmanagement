@@ -17,10 +17,10 @@ html{
 body{
     margin:0;
     padding:0;
-    /* background-image: url(../images/VNT_University-of-Greenwich-2-1024x511.jpg);
-    background-size: 100%;
-    /* background-position: ; */
-} */
+    background-image: url(../images/VNT_University-of-Greenwich-2-1024x511.jpg);
+    background-size: cover;
+    background-position: center;
+}
 .logo{
     display: flex;
     align-items: center;
