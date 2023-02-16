@@ -26,9 +26,6 @@ class Activities
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $StartDate = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $EndDate = null;
-
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $StartTime = null;
 
