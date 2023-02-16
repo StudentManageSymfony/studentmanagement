@@ -21,6 +21,8 @@ use Symfony\Component\Form\FormBuilderInterface;
             ->add('EndTime', TimeType::class, ['required'=>true])
             ->add('Organizer', ChoiceType::class, ['required'=>true,
                                                     'choices'=>[
+                                                        'English Speaking'=>'English Speaking',
+                                                        'Book'=>'Book'
 
             ]])
             ->add('Submit', SubmitType::class)
