@@ -69,7 +69,7 @@ class Activities
         return $this->Image;
     }
 
-    public function setImage(?string $Image): self
+    public function setImage(?string $Image=null): self
     {
         $this->Image = $Image;
 
