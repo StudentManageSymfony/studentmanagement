@@ -64,12 +64,13 @@
     </div>
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
-            <form action="" method="POST">
+            {# <form action="" method="POST"> #}
+            {{ form_start(form) }}
                 <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Event name: </label>
-                    <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
-                    {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
+                    {# <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/> #}
+                    {{ form_widget(form.Name, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }}
                 </div>
                 <div>
                     <label for="" class="formbold-form-label"> Organizer: </label>
@@ -86,37 +87,37 @@
                 <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Time start: </label>
-                    <input type="time" name="" id="" placeholder=""class="formbold-form-input"/>
-                    {# {{ form_widget(formname, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }} #}
+                    {# <input type="time" name="" id="" placeholder=""class="formbold-form-input"/> #}
+                    {{ form_widget(form.StartTime, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }}
                 </div>
                 <div>
                     <label for="phone" class="formbold-form-label"> Time end: </label>
-                    <input type="time" name="" id="" placeholder="" class="formbold-form-input"/>
-                    {# {{ form_widget(formname, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }} #}
+                    {# <input type="time" name="" id="" placeholder="" class="formbold-form-input"/> #}
+                    {{ form_widget(form.EndTime, {'attr':{'type':'time'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }}
                 </div>
             </div>
 
             <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Date: </label>
-                    <input type="date" name="" id="" placeholder=""class="formbold-form-input"/>
-                    {# {{ form_widget(formname, {'attr':{'type':'date'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }} #}
+                    {# <input type="date" name="" id="" placeholder=""class="formbold-form-input"/> #}
+                    {{ form_widget(form.StartDate, {'attr':{'type':'date'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':''}, {'name':''} }) }}
                 </div>
                 <div>
                     <label for="" class="formbold-form-label"> Score: </label>
-                    <input type="number" min="1" max="20" name="" id="" placeholder="Ex: 7" class="formbold-form-input"/>
-                    {# {{ form_widget(formname, {'attr':{'type':'number'}, {'class':'formbold-form-input'},{'min':'1'}, {'max':'20'}, {'id':''}, {'placeholder':'Ex: 7'}, {'name':''} }) }} #}
+                    {# <input type="number" min="1" max="20" name="" id="" placeholder="Ex: 7" class="formbold-form-input"/> #}
+                    {{ form_widget(form.Score, {'attr':{'type':'number'}, {'class':'formbold-form-input'},{'min':'1'}, {'max':'20'}, {'id':''}, {'placeholder':'Ex: 7'}, {'name':''} }) }}
                 </div>
             </div> 
             <div class="formbold-form-label">
                 <label for="image-vertical">Poster: </label>
-                <input type="file" name="Pro_image" id="Pro_image" class="form-control" value="">
-                {# {{ form_widget(formname, {'attr':{'type':'file'}, {'class':'form-control'}, {'id':'Pro_image'}, {'value':''}, {'name':'Pro_image'} }) }} #}
+                {# <input type="file" name="Pro_image" id="Pro_image" class="form-control" value=""> #}
+                {{ form_widget(form.Image, {'attr':{'type':'file'}, {'class':'form-control'}, {'id':'Pro_image'}, {'value':''}, {'name':'Pro_image'} }) }}
             </div>    
-            <button class="formbold-btn">
-                Submit
-            </button>
-        </form>
+            {# <button class="formbold-btn">Submit </button> #}
+            {{ form_widget(form.Submit, {'attr':{'class':'formbold-btn'} }) }}
+        {# </form> #}
+        {{ form_end(form) }}
         </div>
     </div>
 
