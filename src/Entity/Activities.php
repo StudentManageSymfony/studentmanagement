@@ -29,6 +29,15 @@ class Activities
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $EndDate = null;
 
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $StartTime = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $EndTime = null;
+
+    #[ORM\Column(length: 40)]
+    private ?string $Organizer = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -82,15 +91,40 @@ class Activities
         return $this;
     }
 
-    public function getEndDate(): ?\DateTimeInterface
+    public function getStartTime(): ?\DateTimeInterface
     {
-        return $this->EndDate;
+        return $this->StartTime;
     }
 
-    public function setEndDate(\DateTimeInterface $EndDate): self
+    public function setStartTime(\DateTimeInterface $StartTime): self
     {
-        $this->EndDate = $EndDate;
+        $this->StartTime = $StartTime;
 
         return $this;
     }
+
+    public function getEndTime(): ?\DateTimeInterface
+    {
+        return $this->EndTime;
+    }
+
+    public function setEndTime(\DateTimeInterface $EndTime): self
+    {
+        $this->EndTime = $EndTime;
+
+        return $this;
+    }
+
+    public function getOrganizer(): ?string
+    {
+        return $this->Organizer;
+    }
+
+    public function setOrganizer(string $Organizer): self
+    {
+        $this->Organizer = $Organizer;
+
+        return $this;
+    }
+
 }

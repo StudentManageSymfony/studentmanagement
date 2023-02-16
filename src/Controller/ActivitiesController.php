@@ -25,5 +25,9 @@ class ActivitiesController extends AbstractController
         return $this->render('main/adding-activities.html.twig', []);
     }
 
+
     
+
+
+
 }
