@@ -71,12 +71,14 @@
                     <label for="" class="formbold-form-label"> Event name: </label>
                     {# <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/> #}
                     {{ form_widget(form.Name, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }}
+                    <input type="text" name="" id="" placeholder="Ex: Create your future" class="formbold-form-input"/>
+                    {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
                 </div>
                 <div>
                     <label for="" class="formbold-form-label"> Organizer: </label>
                     {# <!-- <input type="text" name="memberName" id="lastname" placeholder="Ex Nguyễn Văn A" class="formbold-form-input"/> --> #}
                         <select class="form-select" id="" style="height: 52px;">
-                            <option selected value="1">Choose one club</option>
+                            <option selected value="">Choose one club</option>
                             <option value="1">English Speaking</option>
                             <option value="2">Media</option>
                             <option value="3">Book</option>
