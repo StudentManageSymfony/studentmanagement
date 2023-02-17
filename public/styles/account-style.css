@@ -55,7 +55,7 @@ button.add {
     transition: all 250ms;
     overflow: hidden;
 }
-   
+
 button.add::before {
     content: "";
     position: absolute;

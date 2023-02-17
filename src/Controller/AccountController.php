@@ -15,4 +15,12 @@ class AccountController extends AbstractController
     {
         return $this->render('main/account.html.twig', []);
     }
+
+    /**
+     * @Route("/addingaccount", name="AddAcc")
+     */
+    public function addingAccount(): Response
+    {
+        return $this->render('main/adding-account.html.twig', []);
+    }
 }
