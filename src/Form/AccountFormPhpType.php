@@ -4,6 +4,12 @@ namespace App\Form;
 
 use App\Entity\Account;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,14 +18,27 @@ class AccountFormPhpType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('studenName')
-            ->add('dateOfBirth')
-            ->add('major')
-            ->add('email')
-            ->add('gender')
-            ->add('password')
-            ->add('role')
-            ->add('studentId')
+            ->add('studenName', TextType::class, ['required'=>true])
+            ->add('dateOfBirth', DateType::class, ['required'=>true,
+                                                    'years'=>range(1990, 2023)])
+            ->add('major', ChoiceType::class, ['choices'=>['SE - Computing'=>'SE - Computing',
+                                                        'BA - Event'=>'BA - Event',
+                                                        'BA - Business'=>'BA - Business',
+                                                        'BA - Marketing'=>'BA - Marketing',
+                                                        'GD - Graphic Design'=>'GD - Graphic Design',
+                                                        'PDP - Student Service'=>'PDP - Student Service']])
+            ->add('email', EmailType::class, ['required'=>true])
+            ->add('gender', ChoiceType::class, ['choices'=>[
+                                                'Male'=>'0',
+                                                'Female'=>'1'],
+                                                'expanded'=>true ])
+
+            ->add('password', PasswordType::class, ['required'=>true])
+            ->add('roles', ChoiceType::class, ['choices'=>['Leader'=>'1',
+                                                            'Members'=>'2']])
+
+            ->add('studenId', TextType::class, ['required'=>true])
+            ->add('submit', SubmitType::class)
         ;
     }
 
@@ -29,4 +48,6 @@ class AccountFormPhpType extends AbstractType
             'data_class' => Account::class,
         ]);
     }
+
+
 }

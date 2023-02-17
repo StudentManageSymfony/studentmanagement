@@ -66,22 +66,26 @@
     </div>
     <div class="cover"> 
         <div class="pr">
-            <form class="row g-3">
+            {# <form class="row g-3"> #}
+            {{ form_start(form, {'attr':{'class':'row g-3'} }) }}
                 <div class="col-md-3">
                     <label for="inputId" class="form-label">Member ID</label>
-                    <input type="email" class="form-control" id="inputId">
+                    {# <input type="email" class="form-control" id="inputId"> #}
+                    {{ form_widget(form.studentId, {'attr':{'class':'form-label'} }) }}
                 </div>
                 <div class="col-md-3">
                     <label for="inputName" class="form-label">Member Name</label>
-                    <input type="text" class="form-control" id="inputName">
+                    {# <input type="text" class="form-control" id="inputName"> #}
+                    {{ form_widget(form.studenName, {'attr':{'class':'form-label'} }) }}
                 </div>                
                 <div class="col-md-3">
                     <label for="inputDate" class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control" id="inputDate">
+                    {# <input type="date" class="form-control" id="inputDate"> #}
+                    {{ form_widget(form.dateOfBirth, {'attr':{'class':'form-label'} }) }}
                 </div>                
                 <div class="col-md-3">
                     <label for="inputMajor" class="form-label">Major</label>
-                    <select id="inputMajor" class="form-select">
+                    {# <select id="inputMajor" class="form-select">
                     <option selected>Choose...</option>
                     <option value="0">SE - Computing</option>
                     <option value="1">BA - Event</option>
@@ -89,29 +93,33 @@
                     <option value="3">BA - Marketing</option>
                     <option value="4">GD - Graphic Design</option>
                     <option value="5">PDP - Student Service</option>
-                    </select>
+                    </select> #}
+                    {{ form_widget(form.major, {'attr':{'class':'form-label'} }) }}
                 </div>
                 <div class="col-md-6">
                     <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Ex: datdmgcc21047@fpt.ed.vn">
+                    {# <input type="email" class="form-control" id="inputEmail" placeholder="Ex: datdmgcc21047@fpt.ed.vn"> #}
+                    {{ form_widget(form.email, {'attr':{'class':'form-label'} }) }}
                 </div>
                 <div class="col-md-6">
                     <label for="inputPass" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPass">
+                    {# <input type="password" class="form-control" id="inputPass"> #}
+                    {{ form_widget(form.password, {'attr':{'class':'form-control'} }) }}
                 </div>
                 <div class="check col-md-6">
                     <label for="" class="formbold-form-label"> Role: </label>
                     <br>
-                    <select type="" name="" id="" class="formbold-form-input">
+                    {# <select type="" name="" id="" class="formbold-form-input">
                         <option>Leader</option>
                         <option selected>Member</option>
-                    </select>
+                    </select> #}
+                    {{ form_widget(form.roles, {'attr':{'class':'formbold-form-input'} }) }}
                 </div>
 
                 <!-- Check -->
                 <div class="check col-md-6">
                     Gender
-                    <div class="check-box">
+                    {# <div class="check-box">
                         <div class="form-check col-2">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                             <label class="form-check-label" for="flexRadioDefault1">
@@ -124,12 +132,15 @@
                                 Female
                             </label>
                         </div>
-                    </div>
+                    </div> #}
+                    {{ form_widget(form.gender, {'attr':{'class':''} }) }}
                 </div>
-                <div class="button">
+                {# <div class="button">
                     <button type="submit" class="btn btn-primary btn-lg" style="width: 50%;">Submit</button>
-                </div>
-            </form>
+                </div> #}
+                {{ form_widget(form.submit, {'attr':{'class':''} }) }}
+            {# </form> #}
+            {{ form_end(form) }}
         </div>
     </div>
 </body>
