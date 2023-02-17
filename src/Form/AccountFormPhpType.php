@@ -29,13 +29,13 @@ class AccountFormPhpType extends AbstractType
                                                         'PDP - Student Service'=>'PDP - Student Service']])
             ->add('email', EmailType::class, ['required'=>true])
             ->add('gender', ChoiceType::class, ['choices'=>[
-                                                'Male'=>'0',
-                                                'Female'=>'1'],
+                                                'Male'=>true,
+                                                'Female'=>false],
                                                 'expanded'=>true ])
 
             ->add('password', PasswordType::class, ['required'=>true])
-            ->add('roles', ChoiceType::class, ['choices'=>['Leader'=>'1',
-                                                            'Members'=>'2']])
+            // ->add('rolesofgroup', ChoiceType::class, ['choices'=>['Leader'=>'1',
+            //                                                 'Members'=>'2']])
 
             ->add('studenId', TextType::class, ['required'=>true])
             ->add('submit', SubmitType::class)

@@ -25,11 +25,20 @@ class RegistrationController extends AbstractController
         if($form->isSubmitted()&&$form->isValid()){
             $account->setPassword(
                 $userPasswordHasher->hashPassword(
-                    $user,
-                    $form->get('')
+                    $account,
+                    $form->get('password')->getData()
                 )
             );
+            $account->setRoles(['ROLE_USER']);
+
+            $entityManager->persist($account);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_login'); 
         }
-        return $this->render('$0.html.twig', []);
+        return $this->render('main/adding-account.html.twig', 
+        [
+            'form'=> $form->createView()
+        ]);
     }
 }
