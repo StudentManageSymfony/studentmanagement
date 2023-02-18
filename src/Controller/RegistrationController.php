@@ -25,6 +25,7 @@ class RegistrationController extends AbstractController
         if($form->isSubmitted()&&$form->isValid()){
             $account->setPassword(
                 $userPasswordHasher->hashPassword(
+                    //Nó sẽ băm mk 
                     $account,
                     $form->get('password')->getData()
                 )

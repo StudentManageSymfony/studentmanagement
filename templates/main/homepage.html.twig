@@ -7,7 +7,12 @@
     <link rel="stylesheet" href="{{asset('styles/footer.css')}}">
 {% endblock %}
 {% block body %}
+    {% if app.user == null %}
+    <a href="{{path('Index')}}" class="btn btn-info">You need to login to see the list 😜😜</a>
+    {% endif %}
 
+    {% if app.user != null %}
+        
     <div class="head_logo">
                 <img src="../images/2022-Greenwich-Eng.png" alt="Logo">
             </div>
@@ -55,7 +60,7 @@
             </div>
 
                 <a href="#" class="nav-item nav-link">Welcome ...</a>
-                <a href="../html/index.html" class="nav-item nav-link">Logout</a>
+                <a href="logout" class="nav-item nav-link">Logout</a>
             </nav>
 
 
@@ -273,4 +278,8 @@
         </div>
     </div>
 </footer>
+{% endif %}
+
+
+
 {% endblock %}

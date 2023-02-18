@@ -19,9 +19,11 @@ security:
             provider: app_user_provider
             custom_authenticator: App\Security\LoginFormAuthenticator
             logout:
-                path: app_logout
+                path: Logout
+                # Sd route name
                 # where to redirect after logout
-                # target: app_any_route
+                target: Index
+                # Sd route name
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -32,8 +34,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/addingaccount|^/adding-activities|^/check-in|^/members, roles: ROLE_ADMIN }
+        - { path: ^/homepage|^/activities, roles: ROLE_USER }
 
 when@test:
     security:

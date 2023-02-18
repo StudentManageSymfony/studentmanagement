@@ -24,6 +24,7 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/index.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        //có ng đã đăng nhập rồi, nếu đăng nhập nữa thì sẽ báo là phải logout mới có thể login 
     }
 
     

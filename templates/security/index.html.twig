@@ -10,6 +10,7 @@
 
 
 {% block body %}
+
   <div>
     <div class="login-box">
         <div class="head-form">
@@ -19,25 +20,42 @@
             <h2>WELCOME TO GREENWICH VIETNAM</h2>
         </div>
 
-        <form>
+        <form method="post">
         {# {{ form_start(index_form) }} #}
+        {% if error %}
+          <div class="alert alert-danger">{{error.messageKey|trans(error.messsageData, 'security')}}</div>
+        {% endif %}
+
+        {% if app.user %}
+          <div class="mb-3">
+            you are logged in as {{app.user.userIdentifier}}, <a href="{{path('Logout')}}">Logout</a>
+          </div>
+        {% endif %}
           <div class="user-box">
-            <input type="text" name="" id="" required="">
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             {# {{ form_widget(index_form.username, {'attr':{'type':'text'}, {'require':'true'} }) }} #}
-            <label>Username</label>
+            <label>Email</label>
           </div>
           <div class="user-box">
-            <input type="password" name="" id="" required="">
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
             {# {{ form_widget(index_form.password, {'attr':{'type':'password'}, {'require':'true'} }) }} #}
             <label>Password</label>
           </div>
-          <a href="homepage">
+          {# <a href="homepage">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
             Login
-          </a>
+          </a> #}
+          <button class="btn" type="submit">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              Sign in
+          </button>
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
           {# {{ form_widget(index_form.login) }} #}
           {# {{ form_end(index_form) }} #}
         </form>
