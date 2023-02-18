@@ -35,13 +35,15 @@
 
 <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
     <div class="navbar-nav">
-        <a class="nav-link active" href="../html/homepage.html">Home</a>
-        <a href="../html/clubs.html" class="nav-link" style="color: #ffffff;">Clubs</a>
-        <a href="../html/members.html" class="nav-link" style="color: #ffffff;">Members</a>
-        <a class="nav-link" href="../html/check-in.html" style="color: #ffffff;">Check-in</a>
-        <a class="nav-link" href="../html/attendance.html" style="color: #ffffff;">Attendance</a>
-        <a class="nav-link" href="../html/activities.html"style="color: #ffffff;">Activities</a>
-        <a class="nav-link" href="../html/account.html"style="color: #ffffff;">Account</a>
+        <a class="nav-link active" href="homepage">Home</a>
+        <a href="clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="members" class="nav-link" style="color: #ffffff;">Members</a>
+        <a class="nav-link" href="check-in" style="color: #ffffff;">Check-in</a>
+    {% endif %}
+        <a class="nav-link" href="attendance" style="color: #ffffff;">Attendance</a>
+        <a class="nav-link" href="activities"style="color: #ffffff;">Activities</a>
+        <a class="nav-link" href="account"style="color: #ffffff;">Account</a>
     </div>
 </div>
 

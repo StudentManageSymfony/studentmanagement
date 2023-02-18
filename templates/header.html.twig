@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+    
+        {% block body %}
+        <body>
+                        <div class="head_logo">
+                <img src="../images/2022-Greenwich-Eng.png" alt="Logo">
+            </div>
+            <nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #2C74B3;">
+                <a id="Logo" href="#" class="navbar-brand">
+                    Greenwich Clubs
+                    <!-- <img src="../ASM2/Images/ESC Logo (1)-02.png" alt="" style="height: 50px; width: 50px;"> -->
+                </a>
+                <style>
+                    *{
+                        font-family:'Quicksand', sans-serif !important;
+                    }
+                    body{
+                        font-weight: 500 !important;
+                    }
+                    #Logo.navbar-brand{
+                        padding-left: 20px;
+                    }
+                    nav.navbar{
+                        font-weight: 600;
+                    }
+                </style>
+                <button style="color:#000" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="bi bi-list"></span>
+                </button>
+                    <style>
+                        .dropdown:hover .dropdown-menu{
+                            display: block;
+                        }
+                        .navbar-toggler{
+                            color: #000;
+                        }
+                    </style>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
+                <div class="navbar-nav">
+                    <a class="nav-link active" href="homepage">Home</a>
+                    <a href="../html/clubs.html" class="nav-link" style="color: #ffffff;">Clubs</a>
+                    <a href="../html/members.html" class="nav-link" style="color: #ffffff;">Members</a>
+                    <a class="nav-link" href="../html/check-in.html" style="color: #ffffff;">Check-in</a>
+                    <a class="nav-link" href="../html/attendance.html" style="color: #ffffff;">Attendance</a>
+                    <a class="nav-link" href="../html/activities.html"style="color: #ffffff;">Activities</a>
+                    <a class="nav-link" href="../html/account.html"style="color: #ffffff;">Account</a>
+                </div>
+            </div>
+
+                <a href="#" class="nav-item nav-link">Welcome ...</a>
+                <a href="../html/index.html" class="nav-item nav-link">Logout</a>
+            </nav>
+
+
+    </body>
+        {% endblock %}
+    

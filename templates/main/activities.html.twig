@@ -46,8 +46,10 @@
     <div class="navbar-nav">
         <a class="nav-link active" href="homepage">Home</a>
         <a href="clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
+    {% if is_granted("ROLE_ADMIN") %}
         <a href="members" class="nav-link" style="color: #ffffff;">Members</a>
         <a class="nav-link" href="check-in" style="color: #ffffff;">Check-in</a>
+    {% endif %}
         <a class="nav-link" href="attendance" style="color: #ffffff;">Attendance</a>
         <a class="nav-link" href="activities"style="color: #ffffff;">Activities</a>
         <a class="nav-link" href="account"style="color: #ffffff;">Account</a>
@@ -59,13 +61,15 @@
 </nav>
 
 
-
     <div class="heading">
         <h2>Exhibition Activities</h2>
     </div>
     <div class="btn-show">
         <div class="add-members">
-            <a href="adding-activities"><button class="add"> Add new</button></a>
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href="adding-activities"><button class="add"> Add new</button></a>
+            {% endif %}
+
         </div>
     </div>
     

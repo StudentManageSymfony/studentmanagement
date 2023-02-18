@@ -39,7 +39,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             ]
         );
     }
-    //Sẽ check cái email mới nhập vô, check emai đúng ko, sau đó băm mk và lưu session
+    //Sẽ check cái email mới nhập vô, check emai đúng ko, sau đó băm mk và lưu vào session
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {//Hàm đăng nhập thành công
