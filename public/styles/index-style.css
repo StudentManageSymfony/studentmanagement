@@ -92,7 +92,7 @@ body{
     font-size: 15px;
 }
   
-.login-box form a{
+.login-box form button{
     position: relative;
     display: inline-block;
     padding: 10px 100px;
@@ -108,12 +108,12 @@ body{
     border-radius: 7px;
 }
  
-form a{
+form button{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
-.login-box a:hover {
+.login-box button:hover {
     background: var(--blue_heavy);
     color: var(--white);
     border-radius: 5px;
