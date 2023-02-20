@@ -6,13 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AccountController extends AbstractController
+class CheckinController extends AbstractController
 {
     /**
-     * @Route("/account", name="Account")
+     * @Route("/check-in", name="Check-in")
      */
-    public function showListAccount(): Response
+    public function showCheckin(): Response
     {
-        return $this->render('main/account.html.twig', []);
+        return $this->render('main/check-in.html.twig', []);
     }
 }

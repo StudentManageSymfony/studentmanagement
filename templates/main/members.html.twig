@@ -8,13 +8,15 @@
 
 {% block body %}
 
+        {% include 'header.html.twig' %}
+
 
     <div class="heading">
         <h4>Members Manager</h4>
     </div>
     <div class="btn-show">
         <div class="add-members">
-            <a href="../html/adding-members.html"><button class="add"> Add new</button></a>
+            <a href="adding-members"><button class="add"> Add new</button></a>
         </div>
         <div class="search">
             <form class="example1" action="#">
@@ -85,5 +87,8 @@
             </table>
         </div>
     </div>
+
+
+        {% include 'footer.html.twig' %}
 {% endblock %}
 
