@@ -4,61 +4,11 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('styles/clubs-style.css')}}">
-    <link rel="stylesheet" href="{{asset('styles/footer.css')}}">
 {% endblock %}
 
 {% block body %}
-    <div class="head_logo">
-    <img src="../images/2022-Greenwich-Eng.png" alt="Logo">
-</div>
-<nav class="navbar navbar-expand-lg justify-content-center" style="background-color: #2C74B3;">
-    <a id="Logo" href="#" class="navbar-brand">
-        Greenwich Clubs
-        <!-- <img src="../ASM2/Images/ESC Logo (1)-02.png" alt="" style="height: 50px; width: 50px;"> -->
-    </a>
-    <style>
-        *{
-            font-family:'Quicksand', sans-serif !important;
-        }
-        body{
-            font-weight: 500 !important;
-        }
-        #Logo.navbar-brand{
-            padding-left: 20px;
-        }
-        nav.navbar{
-            font-weight: 600;
-        }
-    </style>
-    <button style="color:#000" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-        <span class="bi bi-list"></span>
-    </button>
-        <style>
-            .dropdown:hover .dropdown-menu{
-                display: block;
-            }
-            .navbar-toggler{
-                color: #000;
-            }
-        </style>
-
-<div class="collapse navbar-collapse justify-content-center" id="navbarMain">
-    <div class="navbar-nav">
-        <a class="nav-link active" href="homepage">Home</a>
-        <a href="clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
-    {% if is_granted("ROLE_ADMIN") %}
-        <a href="members" class="nav-link" style="color: #ffffff;">Members</a>
-        <a class="nav-link" href="check-in" style="color: #ffffff;">Check-in</a>
-    {% endif %}
-        <a class="nav-link" href="attendance" style="color: #ffffff;">Attendance</a>
-        <a class="nav-link" href="activities"style="color: #ffffff;">Activities</a>
-        <a class="nav-link" href="account"style="color: #ffffff;">Account</a>
-    </div>
-</div>
-
-    <a href="#" class="nav-item nav-link">Welcome ...</a>
-    <a href="../html/index.html" class="nav-item nav-link">Logout</a>
-</nav>
+    
+    {% include 'header.html.twig' %}
 
 
 
@@ -69,7 +19,7 @@
     <div class="btn-show">
         <div class="add-members">
         {% if is_granted("ROLE_ADMIN") %}
-            <a href="../html/adding-clubs.html"><button> Add new</button></a>
+            <a href="adding-clubs"><button> Add new</button></a>
         {% endif %}
         </div>  
     </div>
@@ -125,48 +75,7 @@
     </div>
 
 
-
-
-    <footer class="mainfooter" role="contentinfo">
-    <div class="footer-middle">
-        <div class="container">
-        <div class="row">
-            <h4 class="title text-uppercase">Can Tho Campus</h4>
-            <div class="col-md-5 col-sm-6">
-                <!--Column1-->
-                <div class="footer-pad">
-                    <h4 class="text-uppercase">Greenwich Vietnam</h4>
-                    <p><i class="bi bi-telephone-fill"></i><a> Phone: 0907 297 396</a></p>
-                    <p><i class="bi bi-facebook"></i><a> Facebook: Greenwich Vietnam</a></p>
-                    <p><i class="bi bi-telephone-fill"></i><a> Website: greenwich.edu.vn</a></p>
-                    <p><i class="bi bi-geo-alt-fill"></i><a> Address: 160 30/4 Street, An Phu Ward, Ninh Kieu District, Cantho City, Viet Nam</a></p>
-                </div>
-            </div>
-                <div class="col-md-3 col-sm-6">
-                <!--Column1-->
-                    <div class="footer-pad">
-                        <h4 class="text-uppercase">Contact information</h4>
-                        <p>Email Admin: dangph5@fe.edu.vn</p>
-                        <p>Phone Admin: 0336337022</p>
-                        <p>Email Web Creater: datdmgcc210147</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                <!--Column1-->
-                    <div class="footer-pad">
-                        <h4 class="text-uppercase">About us</h4>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, dignissimos pariatur iste qui tenetur tempore voluptatibus neque architecto, modi, minus id nulla. A eos dignissimos eveniet aliquam nam! Possimus, dignissimos?</p>
-                    </div>
-                </div>
-        </div>
-                <div class="row">
-                    <div class="col-md-12 copy">
-                    <p class="text-center">&copy; Copyright - Greenwich Vietnam | Can Tho Campus | All rights reserved.</p>
-                    </div>
-                </div>
-        </div>
-    </div>
-</footer>
+        {% include 'footer.html.twig' %}
 {% endblock %}
 
 

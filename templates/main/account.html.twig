@@ -13,12 +13,19 @@
     <div class="heading">
         <h4>ACCOUNT INFORMATION</h4>
     </div>
-
-    <div class="btn-show">
-        <div class="add-members">
-            <a href="addingaccount"><button class="add"> Add new</button></a>
+    
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="btn-show">
+            <div class="add-members">
+                <a href="addingaccount"><button class="add"> Add new</button></a>
+            </div>
         </div>
-    </div>
+    {% endif %}
+    
+                
+    
+
+
     <div class="cover"> 
         <div class="pr">
             <form class="row g-3">
