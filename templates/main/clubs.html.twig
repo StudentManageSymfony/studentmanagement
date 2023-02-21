@@ -43,10 +43,12 @@
                 <td>English Speaking</td>
                 <td>27</td>
                 <td>Đặng Minh Đạt</td>
+                {% if is_granted("ROLE_ADMIN") %}
                 <td>
                     <a href=""><i class="bi bi-pencil-square"></i></a>
                     <a href=""><i class="bi bi-x-square"></i></a>
                 </td>
+                {% endif %}
             </tr>
             <tr>
                 <th scope="row">2</th>

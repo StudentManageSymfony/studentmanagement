@@ -34,10 +34,12 @@
                                 <div class="circle"><span class="yellow box"></span></div>
                                 <div class="circle"><span class="green box"></span></div>
                             </div>
+                            {% if is_granted("ROLE_ADMIN") %}
                             <div class="small-nav">
                                 <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
                                 <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
                             </div>
+                            {% endif %}
                         </div>
                         <div class="card__content">
                             <div class="card-left pe-4">
