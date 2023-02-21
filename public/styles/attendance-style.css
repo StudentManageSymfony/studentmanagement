@@ -16,6 +16,17 @@
     box-sizing: border-box;
     font-size: 15px;    
 }
+nav.navbar{
+    padding: 20px;
+}
+.head_logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.head_logo img{
+    width: 17%;
+}
 .heading h4{
     font-family:'Quicksand', sans-serif !important;
     font-size: 50px;

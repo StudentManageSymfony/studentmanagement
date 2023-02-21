@@ -19,6 +19,17 @@
 body {
   font-family: "Inter", sans-serif;
 }
+nav.navbar{
+  padding: 20px;
+}
+.head_logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.head_logo img{
+  width: 17%;
+}
 .formbold-main-wrapper {
   display: flex;
   align-items: center;
