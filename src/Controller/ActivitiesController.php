@@ -6,36 +6,97 @@ use App\Entity\Activities;
 use App\Form\ActivitiesFormType;
 use App\Repository\ActivitiesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class ActivitiesController extends AbstractController
 {
     /**
      * @Route("/activities", name="Activities")
      */
-    public function showListActivities(): Response
+    public function showListActivities(ActivitiesRepository $repo): Response
     {
-        return $this->render('main/activities.html.twig', []);
+        $showActivities = $repo->findAll();
+        return $this->render('main/activities.html.twig', ['activity'=>$showActivities]);
     }
 
 
     /**
      * @Route("/adding-activities", name="AddingActivities")
      */
-    public function addingActivities(ActivitiesRepository $repo, Request $req): Response
+    public function addingActivities(ActivitiesRepository $repo, Request $req, SluggerInterface $slugger): Response
     {
         $addActivities = new Activities();
         $form = $this->createForm(ActivitiesFormType::class, $addActivities);
 
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
+            $imgFile = $form->get('file')->getData();
+            if($imgFile){
+                $newFileName = $this->uploadImage($imgFile, $slugger);
+                $addActivities->setImage($newFileName);
+            }
             $repo->save($addActivities, true);
-            return new Response("Successfull Added".$addActivities->getId());
+            return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('main/adding-activities.html.twig', ['form'=>$form->createView()]);
     }
+
+
+
+    //function to rename image file and upload it to images folder
+    public function uploadImage($imgFile, SluggerInterface $slugger):?string{
+        $originalFileName = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFileName = $slugger->slug($originalFileName);
+        $newFileName = $safeFileName.'-'.uniqid().'.'.$imgFile->guessExtension();
+        try{
+            $imgFile->move(
+                $this->getParameter('image_dir'),
+                $newFileName
+            );
+        }catch(FileException $e){
+            echo $e;
+        }
+        return $newFileName;
+    }
+
+    /**
+     * @Route("/editActivities/{id}", name="EditActivities")
+     */
+    public function editActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id, SluggerInterface $slugger): Response
+    {
+        $form = $this->createForm(ActivitiesFormType::class, $id);
+
+        $form->handleRequest($req);
+        if($form->isSubmitted()&&$form->isValid()){
+            $imgFile = $form->get('file')->getData();
+            if($imgFile){
+                $newFileName = $this->uploadImage($imgFile, $slugger);
+                $id->setImage($newFileName);
+            }
+            $repo->save($id, true);
+            return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render('main/adding-activities.html.twig', ['form'=>$form->createView()]);
+    }
+
+
+
+    /**
+     * @Route("/deleteActivities/{id}", name="DeleteActivities")
+     */
+    public function deleteActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id): Response
+    {
+        $form = $this->createForm(ActivitiesFormType::class, $id);
+        
+            $repo->remove($id, true);
+            return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
+            $id->getId();
+    }
+
 
 
 

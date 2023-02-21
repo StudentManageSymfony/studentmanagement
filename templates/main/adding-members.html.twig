@@ -16,11 +16,12 @@
         <div class="formbold-main-wrapper">
             <div class="formbold-form-wrapper">
             <form action="" method="POST">
+            {# {{ form_start(form) }} #}
                 <div class="formbold-input-flex">
                     <div>
                         <label for="firstname" class="formbold-form-label"> Member ID: </label>
                         <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
-                        {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
+                        {# {{ form_widget(form, {'attr':{'class':'formbold-form-input'} }) }} #}
                     </div>
                     <div>
                         <label for="lastname" class="formbold-form-label"> Member Name: </label>

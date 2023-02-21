@@ -32,8 +32,38 @@ class ClubController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
             $repo->save($addClub, true);
-            return new Response("Added Successfully".$addClub->getId());
+            return $this->redirectToRoute('Club');
         }
         return $this->render('main/adding-clubs.html.twig', ['form'=>$form->createView()]);
+    }
+
+    /**
+     * @Route("/editClub/{id}", name="EditClub")
+     */
+    public function editClubAction(ClubsRepository $repo, Request $req, Clubs $id): Response
+    {
+        $form = $this->createForm(ClubType::class,$id);
+        $form->handleRequest($req);
+        if($form->isSubmitted()&&$form->isValid()){
+            $repo->save($id, true);
+            return $this->redirectToRoute('Club');
+            $id->getId();
+        }
+        return $this->render('main/adding-clubs.html.twig', ['form'=>$form->createView()]);
+    }
+
+
+    /**
+     * @Route("/deleteClub/{id}", name="DeleteClub")
+     */
+    public function deleteClubAction(ClubsRepository $repo, Request $req, Clubs $id): Response
+    {
+        $form = $this->createForm(ClubType::class, $id);
+        if($form->handleRequest($req)){
+            $repo->remove($id, true);
+            return $this->redirectToRoute('Club');
+            $id->getId();
+        }
+        return $this->redirectToRoute('Club');
     }
 }

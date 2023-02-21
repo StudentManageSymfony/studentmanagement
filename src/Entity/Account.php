@@ -43,6 +43,9 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $gender = null;
 
+    #[ORM\OneToOne(mappedBy: 'accountId', cascade: ['persist', 'remove'])]
+    private ?Member $accountMember = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -188,6 +191,23 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGender(int $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getAccountMember(): ?Member
+    {
+        return $this->accountMember;
+    }
+
+    public function setAccountMember(Member $accountMember): self
+    {
+        // set the owning side of the relation if necessary
+        if ($accountMember->getAccountId() !== $this) {
+            $accountMember->setAccountId($this);
+        }
+
+        $this->accountMember = $accountMember;
 
         return $this;
     }

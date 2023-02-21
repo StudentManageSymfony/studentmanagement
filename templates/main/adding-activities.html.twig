@@ -22,7 +22,7 @@
                 <div class="formbold-input-flex">
                 <div>
                     <label for="" class="formbold-form-label"> Event name: </label>
-                    <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
+                    {# <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/> #}
                     {{ form_widget(form.Name, {'attr':{'class':'formbold-form-input'} }) }}
                     {# <input type="text" name="" id="" placeholder="Ex: Create your future" class="formbold-form-input"/> #}
                     {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
@@ -68,7 +68,14 @@
             <div class="formbold-form-label">
                 <label for="image-vertical">Poster: </label>
                 {# <input type="file" name="Pro_image" id="Pro_image" class="form-control" value=""> #}
+                {{ form_widget(form.file, {'attr':{'class':'form-control'} }) }}
                 {{ form_widget(form.Image, {'attr':{'class':'form-control'} }) }}
+                {% set img = form.Image.vars.value %}
+                {# {% if img %}
+                    <img src="{{asset('images/'~img) }}">
+                    {% else %}
+                    <img src="../images/111.jpg">
+                {% endif %} #}
             </div>    
             {# <button class="formbold-btn">Submit </button> #}
             {{ form_widget(form.Submit, {'attr':{'class':'formbold-btn'} }) }}

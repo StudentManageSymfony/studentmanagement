@@ -51,8 +51,8 @@
                 {% if is_granted("ROLE_ADMIN") %}
                 
                 <td>
-                    <a href=""><i class="bi bi-pencil-square"></i></a>
-                    <a href=""><i class="bi bi-x-square"></i></a>
+                    <a href="editClub/{{cl.id}}"><i class="bi bi-pencil-square"></i></a>
+                    <a href="deleteClub/{{cl.id}}"><i class="bi bi-x-square"></i></a>
                 </td>
                 {% endif %} 
             </tr>

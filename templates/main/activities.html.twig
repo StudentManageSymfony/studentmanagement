@@ -26,6 +26,7 @@
     
         <div class="container-fluid">
             <div class="row g-4">
+            {% for ac in activity %}
                 <div class="col-md-6 col-12">
                     <div class="p-3 border rounded-4">
                         <div class="navbar-tools d-flex">
@@ -36,14 +37,21 @@
                             </div>
                             {% if is_granted("ROLE_ADMIN") %}
                             <div class="small-nav">
-                                <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
-                                <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
+                                <div class="icons"><a href="editActivities/{{ac.id}}"><i class="bi bi-pencil-square"></i></i></a></div>
+                                <div class="icons"><a href="deleteActivities/{{ac.id}}"><i class="bi bi-x-square"></i></i></a></div>
                             </div>
                             {% endif %}
                         </div>
                         <div class="card__content">
                             <div class="card-left pe-4">
-                                <img src="../images/111.jpg" alt="">
+                            {# Image #}
+                                {# <img src="../images/111.jpg" alt=""> #}
+                                {% set img = ac.image %}
+                                {% if img %}
+                                    <img src="{{asset('images/'~img) }}">
+                                {% else %}
+                                    <img src="../images/111.jpg">
+                                {% endif %}
                             </div>
                             <div class="card-right">
                                 <div class="article">
@@ -51,13 +59,13 @@
                                     <br><br>
                                 </div>
                                 <div class="title">
-                                    <span>Date: </span>January 20th, 2023
+                                    <span>Date: </span>{{ac.StartDate|date('d/m/y')}}
                                     <br>
-                                    <span>Time: </span>13:30-17:00
+                                    <span>Time: </span>{{ac.StartTime|date('h:m')}} - {{ac.EndTime|date('h:m')}}
                                     <br>
-                                    <span>Organizer: </span>Media Club
+                                    <span>Organizer: </span>{{ac.Organizer}}
                                     <br>
-                                    <span>Score: </span>7
+                                    <span>Score: </span>{{ac.Score}}
                                     <br><br>
                                     <a style="text-decoration: none;" href="">Click here to register</a>
                                 </div>
@@ -65,163 +73,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-12">
-                    <div class="p-3 border rounded-4">
-                        <div class="navbar-tools d-flex">
-                            <div class="tools flex-grow-1">
-                                <div class="circle"><span class="red box"></span></div>
-                                <div class="circle"><span class="yellow box"></span></div>
-                                <div class="circle"><span class="green box"></span></div>
-                            </div>
-                            <div class="small-nav">
-                                <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
-                                <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
-                            </div>
-                        </div>
-                        <div class="card__content">
-                            <div class="card-left pe-4">
-                                <img src="../images/111.jpg" alt="">
-                            </div>
-                            <div class="card-right">
-                                <div class="article">
-                                    <a style="text-decoration:none" href=""><span>Lorem ipsum dolor sit amet consectetur</span></a>
-                                    <br><br>
-                                </div>
-                                <div class="title">
-                                    <span>Date: </span>January 20th, 2023
-                                    <br>
-                                    <span>Time: </span>13:30-17:00
-                                    <br>
-                                    <span>Organizer: </span>Media Club
-                                    <br>
-                                    <span>Score: </span>7
-                                    <br><br>
-                                    <a style="text-decoration: none;" href="">Click here to register</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-12">
-                    <div class="p-3 border rounded-4">
-                        <div class="navbar-tools d-flex">
-                            <div class="tools flex-grow-1">
-                                <div class="circle"><span class="red box"></span></div>
-                                <div class="circle"><span class="yellow box"></span></div>
-                                <div class="circle"><span class="green box"></span></div>
-                            </div>
-                            <div class="small-nav">
-                                <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
-                                <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
-                            </div>
-                        </div>
-                        <div class="card__content">
-                            <div class="card-left pe-4">
-                                <img src="../images/111.jpg" alt="">
-                            </div>
-                            <div class="card-right">
-                                <div class="article">
-                                    <a style="text-decoration:none" href=""><span>Lorem ipsum dolor sit amet consectetur</span></a>
-                                    <br><br>
-                                </div>
-                                <div class="title">
-                                    <span>Date: </span>January 20th, 2023
-                                    <br>
-                                    <span>Time: </span>13:30-17:00
-                                    <br>
-                                    <span>Organizer: </span>Media Club
-                                    <br>
-                                    <span>Score: </span>7
-                                    <br><br>
-                                    <a style="text-decoration: none;" href="">Click here to register</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-12">
-                    <div class="p-3 border rounded-4">
-                        <div class="navbar-tools d-flex">
-                            <div class="tools flex-grow-1">
-                                <div class="circle"><span class="red box"></span></div>
-                                <div class="circle"><span class="yellow box"></span></div>
-                                <div class="circle"><span class="green box"></span></div>
-                            </div>
-                            <div class="small-nav">
-                                <div class="icons"><a href=""><i class="bi bi-pencil-square"></i></i></a></div>
-                                <div class="icons"><a href=""><i class="bi bi-x-square"></i></i></a></div>
-                            </div>
-                        </div>
-                        <div class="card__content">
-                            <div class="card-left pe-4">
-                                <img src="../images/111.jpg" alt="">
-                            </div>
-                            <div class="card-right">
-                                <div class="article">
-                                    <a style="text-decoration:none" href=""><span>Lorem ipsum dolor sit amet consectetur</span></a>
-                                    <br><br>
-                                </div>
-                                <div class="title">
-                                    <span>Date: </span>January 20th, 2023
-                                    <br>
-                                    <span>Time: </span>13:30-17:00
-                                    <br>
-                                    <span>Organizer: </span>Media Club
-                                    <br>
-                                    <span>Score: </span>7
-                                    <br><br>
-                                    <a style="text-decoration: none;" href="">Click here to register</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
 
-        <footer class="mainfooter" role="contentinfo">
-    <div class="footer-middle">
-        <div class="container">
-        <div class="row">
-            <h4 class="title text-uppercase">Can Tho Campus</h4>
-            <div class="col-md-5 col-sm-6">
-                <!--Column1-->
-                <div class="footer-pad">
-                    <h4 class="text-uppercase">Greenwich Vietnam</h4>
-                    <p><i class="bi bi-telephone-fill"></i><a> Phone: 0907 297 396</a></p>
-                    <p><i class="bi bi-facebook"></i><a> Facebook: Greenwich Vietnam</a></p>
-                    <p><i class="bi bi-telephone-fill"></i><a> Website: greenwich.edu.vn</a></p>
-                    <p><i class="bi bi-geo-alt-fill"></i><a> Address: 160 30/4 Street, An Phu Ward, Ninh Kieu District, Cantho City, Viet Nam</a></p>
-                </div>
-            </div>
-                <div class="col-md-3 col-sm-6">
-                <!--Column1-->
-                    <div class="footer-pad">
-                        <h4 class="text-uppercase">Contact information</h4>
-                        <p>Email Admin: dangph5@fe.edu.vn</p>
-                        <p>Phone Admin: 0336337022</p>
-                        <p>Email Web Creater: datdmgcc210147</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                <!--Column1-->
-                    <div class="footer-pad">
-                        <h4 class="text-uppercase">About us</h4>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum, dignissimos pariatur iste qui tenetur tempore voluptatibus neque architecto, modi, minus id nulla. A eos dignissimos eveniet aliquam nam! Possimus, dignissimos?</p>
-                    </div>
-                </div>
-        </div>
-                <div class="row">
-                    <div class="col-md-12 copy">
-                    <p class="text-center">&copy; Copyright - Greenwich Vietnam | Can Tho Campus | All rights reserved.</p>
-                    </div>
-                </div>
-        </div>
-    </div>
-</footer>
+        {% include 'footer.html.twig' %}
 {% endblock %}
 
 
