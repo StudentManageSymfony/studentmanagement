@@ -16,35 +16,46 @@
     </div>
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
-            <form action="" method="POST">
+            {# <form action="" method="POST"> #}
+            {{ form_start(form) }}
                 <div class="formbold-input-flex">
                     <div>
                         <label for="firstname" class="formbold-form-label"> Club ID: </label>
-                        <input type="text" name="" id="" placeholder="Ex: GC101" class="formbold-form-input"/>
-                        {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GC101'}, {'name':''} }) }} #}
+                        {# <input type="text" name="" id="" placeholder="Ex: GC101" class="formbold-form-input"/> #}
+                        {{ form_widget(form.clubId, {'attr':{'class':'formbold-form-input'} }) }}
                     </div>
                     <div>
                         <label for="lastname" class="formbold-form-label"> Club Name: </label>
-                        <input type="text" name="memberName" id="lastname" placeholder="Ex: Book" class="formbold-form-input"/>
-                        {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':'lastname'}, {'placeholder':'Ex: Book'}, {'name':'memberName'} }) }} #}
+                        {# <input type="text" name="memberName" id="lastname" placeholder="Ex: Book" class="formbold-form-input"/> #}
+                        {{ form_widget(form.clubName, {'attr':{'class':'formbold-form-input'} }) }}
                     </div>
                 </div>
                 <div class="formbold-input-flex">
                     <div>
                         <label for="" class="formbold-form-label"> Number of Members: </label>
-                        <input type="" name="" id="" placeholder="Ex: 30"class="formbold-form-input"/>
-                        {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: 30'}, {'name':''} }) }} #}
+                        {# <input type="" name="" id="" placeholder="Ex: 30"class="formbold-form-input"/> #}
+                        {{ form_widget(form.numberOfMembers, {'attr':{'class':'formbold-form-input'} }) }}
+                        
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label"> Leader: </label>
-                        <input type="text" name="" id="" placeholder="Ex: Nguyễn Văn A" class="formbold-form-input"/>
-                        {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: Nguyễn Văn A'}, {'name':''} }) }} #}
-                    </div>
+                        {# <input type="text" name="" id="" placeholder="Ex: Nguyễn Văn A" class="formbold-form-input"/> #}
+                        {{ form_widget(form.leaderName, {'attr':{'class':'formbold-form-input'} }) }}
                 </div>  
-                <button class="formbold-btn" style="font-size: 20px;">
-                    Submit
-                </button>
-            </form>
+
+                <div class="formbold-input-flex">
+                        <div>
+                            <label for="" class="formbold-form-label"> Description: </label>
+                            {# <input type="text" name="" id="" class="formbold-form-input"/> #}
+                            {{ form_widget(form.description, {'attr':{'class':'formbold-form-input'} }) }}
+                        </div>
+                </div>
+                {# <button class="formbold-btn" style="font-size: 20px;"> Submit </button> #}
+                {{ form_widget(form.submit, {'attr':{'class':'formbold-btn'} }) }}
+
+
+            {# </form> #}
+            {{ form_end(form) }}
         </div>
     </div>
 
