@@ -29,7 +29,8 @@ use Symfony\Component\Form\FormBuilderInterface;
             ->add('Organizer', ChoiceType::class, ['required'=>true,
                                                     'choices'=>[
                                                         'English Speaking'=>'English Speaking',
-                                                        'Book'=>'Book'
+                                                        'Book'=>'Book',
+                                                        'Media'=>'Media'
 
             ]])
             ->add('Submit', SubmitType::class)

@@ -116,6 +116,13 @@ nav.navbar{
 }
   
 .title{
+    /* text-align: center; */
+    font-size: 45px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.title-main{
     text-align: center;
     font-size: 45px;
     font-weight: bold;

@@ -21,14 +21,17 @@
         {% if is_granted("ROLE_ADMIN") %}
             <a href="adding-clubs"><button> Add new</button></a>
         {% endif %}
-        </div>  
+        </div>      
+        <div>
+            <h4 style="font-weight:bold">Number of Club: <span style="font-size:22px;color:#2C74B3"> {{club|length}} </span> </h4>
+        </div>
     </div>
 
     <div class="border-table">
         <table class="table table-hover align-middle">
             <thead>
             <tr class="align-middle">
-                <th scope="col">Index</th>
+                {# <th scope="col">Index</th> #}
                 <th scope="col">Club ID</th>
                 <th scope="col">Club Name</th>
                 <th scope="col">Number of members</th>
@@ -43,7 +46,7 @@
             <tbody class="table-striped">
             <tr class="align-middle">
 
-                <th scope="row">{{cl.id}}</th>
+                {# <th scope="row">{{cl.id}}</th> #}
                 <td>{{cl.clubId}}</td>
                 <td>{{cl.clubName}}</td>
                 <td>{{cl.numberOfMembers}}</td>
