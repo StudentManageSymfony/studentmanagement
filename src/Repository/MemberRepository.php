@@ -38,7 +38,23 @@ class MemberRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
+//SELECT a.studen_id, a.studen_name FROM clubs c, member m, account a 
+//WHERE m.account_id_id=a.id and m.club_id_id=c.id and a.studen_id = 'GCC210147'
+    /**
+    * @return Member[] Returns an array of Member objects
+    */
+    public function checkStudentId($value): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('a.studenId, a.studenName')
+            ->innerJoin('m.clubId', 'c')
+            ->innerJoin('m.accountId', 'a')
+            ->where('a.studenId = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
 //    /**
 //     * @return Member[] Returns an array of Member objects
 //     */

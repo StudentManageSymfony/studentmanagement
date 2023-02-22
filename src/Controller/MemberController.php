@@ -23,28 +23,67 @@ class MemberController extends AbstractController
     }
 
 
-    /**
-     * @Route("/adding-members", name="Adding-members")
-     */
-    public function addingMemberAction(MemberRepository $repo, Request $req, SluggerInterface $slugger): Response
-    {
-        // $member = new Member();
-        // $form = $this->createForm(MemberType::class, $member);
+    // /**
+    //  * @Route("/adding-members", name="Adding-members")
+    //  */
+    // public function addingMemberAction(MemberRepository $repo, Request $req, SluggerInterface $slugger): Response
+    // {
+    //     // $member = new Member();
+    //     // $form = $this->createForm(MemberType::class, $member);
 
-        // $form->handleRequest($req);
-        // if($form->isSubmitted()&&$form->isValid()){
-        //     $imgFile = $form->get('file')->getData();
-        //     if($imgFile){
-        //         $newFileName = $this->uploadImage($imgFile, $slugger);
-        //         $member->setImage($newFileName);
-        //     }
-        //     $repo->save($member, true);
-        //     return $this->redirectToRoute('Members', [], Response::HTTP_SEE_OTHER);
-        // }
-        return $this->render('main/adding-members.html.twig',);
-        //['form'=>$form->createView()]
+    //     // $form->handleRequest($req);
+    //     // if($form->isSubmitted()&&$form->isValid()){
+    //     //     $imgFile = $form->get('file')->getData();
+    //     //     if($imgFile){
+    //     //         $newFileName = $this->uploadImage($imgFile, $slugger);
+    //     //         $member->setImage($newFileName);
+    //     //     }
+    //     //     $repo->save($member, true);
+    //     //     return $this->redirectToRoute('Members', [], Response::HTTP_SEE_OTHER);
+    //     // }
+    //     return $this->render('main/adding-members.html.twig',);
+    //     //['form'=>$form->createView()]
+    // }
+
+    /**
+     * @Route("/checkMember", name="CheckMember")
+     */
+    public function checkMember(MemberRepository $repo,Request $req): Response
+    {
+        if($req->query->get('memberId')!=null){
+        $getDataMember = $req->query->get("memberId");
+        // $getDataClub = $req->query->get("clubName");
+        $test = $repo->checkStudentId($getDataMember);
+        if(count($test)!=0){
+            $error = "Your student ID is valuable";
+            return $this->render('main/check-members.html.twig', [
+                'error'=>$error
+            ]);      
+        }else{
+            return $this->redirectToRoute('addMember', ['id'=>$getDataMember], Response::HTTP_SEE_OTHER);
+        }
+        }else 
+        return $this->render('main/check-members.html.twig', []);
     }
 
+    /**
+     * @Route("/adding-members/{id}", name="addMember")
+     */
+    public function addMember(): Response
+    {
+        
+        return $this->render('main/adding-members.html.twig', []);
+    }
+
+
+    /**
+     * @Route("/test/{id}", name="RouteName")
+     */
+    public function FunctionName(MemberRepository $repo, string $id ): Response
+    {
+        $test = $repo->checkStudentId($id);
+        return $this->json($test);
+    }
 
 
     //function to rename image file and upload it to images folder
@@ -62,4 +101,6 @@ class MemberController extends AbstractController
         }
         return $newFileName;
     }
+
+
 }
