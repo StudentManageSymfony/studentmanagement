@@ -55,13 +55,13 @@
                             </div>
                             <div class="card-right">
                                 <div class="article">
-                                    <a style="text-decoration:none" href=""><span>Lorem ipsum dolor sit amet consectetur</span></a>
+                                    <a style="text-decoration:none" href=""><span>{{ac.Name}}</span></a>
                                     <br><br>
                                 </div>
                                 <div class="title">
-                                    <span>Date: </span>{{ac.StartDate|date('d/m/y')}}
+                                    <span>Date: </span>{{ac.StartDate|date('d-m-Y')}}
                                     <br>
-                                    <span>Time: </span>{{ac.StartTime|date('h:m')}} - {{ac.EndTime|date('h:m')}}
+                                    <span>Time: </span>{{ac.StartTime|date('H:i')}} - {{ac.EndTime|date('H:i')}}
                                     <br>
                                     <span>Organizer: </span>{{ac.Organizer}}
                                     <br>
