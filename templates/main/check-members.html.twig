@@ -17,24 +17,15 @@
             <div class="formbold-form-wrapper">
             <form action="/checkMember" method="GET">
             {# {{ form_start(form) }} #}
-                <div class="formbold-input-flex">
+                <div class="formbold-input-flex-1">
                     <div>
                         <label for="firstname" class="formbold-form-label"> Member ID: </label>
                         <input type="text" name="memberId" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
                         {# {{ form_widget(form, {'attr':{'class':'formbold-form-input'} }) }} #}
                     </div>
-                        {{error ?? ""}}
-                    <div>
-                        <label for="" class="formbold-form-label"> Club Name: </label>
-                        <select type="" name="clubName" id="" placeholder="Ex: English Speaking"class="formbold-form-input">
-                        <option value="GC101">English Speaking</option>
-                        <option value="GC103">Book</option>
-                        <option value="GC102">Media</option>
-                        <option value="GC110">IT</option>
-                        </select>
-                    </div>
+                        
                 </div>
-  
+                   <div style="color:red; text-align:center"> {{error ?? ""}} </div>
                 <button class="formbold-btn">
                     Submit
                 </button>

@@ -40,8 +40,8 @@ class AccountFormPhpType extends AbstractType
                                                     // 'first_option'=>['label'=>'Password'],
                                                     // 'second_option'=>['label'=>'Confirm Password']
                                                     // ])
-            // ->add('rolesofgroup', ChoiceType::class, ['choices'=>['Leader'=>'1',
-            //                                                 'Members'=>'2']])
+            // ->add('rolesofGroup', ChoiceType::class, ['choices'=>['Leader'=>['ROLE_ADMIN'],
+            //                                                 'Members'=>['ROLE_USER']]])
 
             ->add('studenId', TextType::class, ['required'=>true])
             ->add('submit', SubmitType::class)
