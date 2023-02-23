@@ -32,8 +32,11 @@
                         justify-content: center;
                     }
                     .head_logo img{
-                        width: 17%;
-}
+                        width: 270px;
+                    }
+                    a.second{
+                        padding-left:10px; 
+                    }
                 </style>
                 <button style="color:#000" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
                     <span class="bi bi-list"></span>
@@ -49,20 +52,21 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
                 <div class="navbar-nav">
-                    <a class="nav-link active" href="homepage">Home</a>
-                    <a href="clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
+                    <a class="nav-link active" href="/homepage">Home</a>
+                    <a href="/clubs" class="nav-link" style="color: #ffffff;">Clubs</a>
                     {% if is_granted("ROLE_ADMIN") %}
-                        <a href="members" class="nav-link" style="color: #ffffff;">Members</a>
-                        <a class="nav-link" href="check-in" style="color: #ffffff;">Check-in</a>
+                        <a href="/members" class="nav-link" style="color: #ffffff;">Members</a>
+                        <a class="nav-link" href="/check-in" style="color: #ffffff;">Check-in</a>
                     {% endif %}
-                    <a class="nav-link" href="attendance" style="color: #ffffff;">Attendance</a>
-                    <a class="nav-link" href="activities"style="color: #ffffff;">Activities</a>
-                    <a class="nav-link" href="account"style="color: #ffffff;">Account</a>
+                    <a class="nav-link" href="/attendance" style="color: #ffffff;">Attendance</a>
+                    <a class="nav-link" href="/activities"style="color: #ffffff;">Activities</a>
+                    <a class="nav-link" href="/account"style="color: #ffffff;">Account</a>
                 </div>
             </div>
-
-                <a href="#" class="nav-item nav-link">Welcome ...</a>
-                <a href="../html/index.html" class="nav-item nav-link">Logout</a>
+                {% if app.user %}
+                    <a href="#" class="nav-item nav-link first">Welcome {{app.user.userIdentifier }} </a>  
+                    <a href="{{path('Logout')}}" class="nav-item nav-link second">Logout</a>            
+                {% endif %}
             </nav>
 
 

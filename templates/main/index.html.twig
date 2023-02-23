@@ -26,11 +26,6 @@
           <div class="alert alert-danger">{{error.messageKey|trans(error.messsageData, 'security')}}</div>
         {% endif %}
 
-        {% if app.user %}
-          <div class="mb-3">
-            you are logged in as {{app.user.userIdentifier}}, <a href="{{path('Logout')}}">Logout</a>
-          </div>
-        {% endif %}
           <div class="user-box">
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
             {# {{ form_widget(index_form.username, {'attr':{'type':'text'}, {'require':'true'} }) }} #}
