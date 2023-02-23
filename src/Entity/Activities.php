@@ -35,6 +35,9 @@ class Activities
     #[ORM\Column(length: 40)]
     private ?string $Organizer = null;
 
+    #[ORM\ManyToOne(inversedBy: 'activities_club')]
+    private ?Clubs $club = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +123,18 @@ class Activities
     public function setOrganizer(string $Organizer): self
     {
         $this->Organizer = $Organizer;
+
+        return $this;
+    }
+
+    public function getClub(): ?Clubs
+    {
+        return $this->club;
+    }
+
+    public function setClub(?Clubs $club): self
+    {
+        $this->club = $club;
 
         return $this;
     }

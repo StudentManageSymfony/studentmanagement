@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,6 +17,7 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->setMethod("GET")
             ->add('memberRole', ChoiceType::class, [
                                                     'choices'=>[
                                                                 'Leader'=>'0',
@@ -29,8 +31,8 @@ class MemberType extends AbstractType
                                             'mapped'=> false
             ])
             ->add('image', HiddenType::class, ['required'=> false])
-            ->add('accountId')
-            ->add('clubId')
+            ->add('accountId', TextType::class)
+            ->add('clubId', TextType::class)
             ->add('submit', SubmitType::class)
         ;
     }

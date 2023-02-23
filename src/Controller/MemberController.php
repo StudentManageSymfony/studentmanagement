@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Member;
 use App\Form\MemberType;
+use App\Repository\AccountRepository;
+use App\Repository\ClubsRepository;
 use App\Repository\MemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -66,24 +68,49 @@ class MemberController extends AbstractController
         return $this->render('main/check-members.html.twig', []);
     }
 
+    // /**
+    //  * @Route("/adding-members/{id}", name="addMember")
+    //  */
+    // public function addMember(string $id, Request $req, AccountRepository $accId, ClubsRepository $clubId): Response
+    // {
+
+        
+    //     return $this->render('main/adding-members.html.twig', []);
+    // }
+
+
+
     /**
      * @Route("/adding-members/{id}", name="addMember")
      */
-    public function addMember(): Response
+    public function addingMemberAction(MemberRepository $repo, Request $req, SluggerInterface $slugger, AccountRepository $accId, ClubsRepository $clubsID): Response
     {
-        
-        return $this->render('main/adding-members.html.twig', []);
-    }
+        $member = new Member();
+        $form = $this->createForm(MemberType::class, $member);
+
+        $form->handleRequest($req);
+        if($form->isSubmitted()&&$form->isValid()){
+
+            //get data from Form
+            $getAccountId = $req->query->get("StudentId");
+            $getClubId = $req->query->get("ClubName");
+            //get ID 
+            $accountId = $accId->findAccountId( $getAccountId);
+            $clubId = $clubsID->findClubId($getClubId);
 
 
-    /**
-     * @Route("/test/{id}", name="RouteName")
-     */
-    public function FunctionName(MemberRepository $repo, string $id ): Response
-    {
-        $test = $repo->checkStudentId($id);
-        return $this->json($test);
+            $imgFile = $form->get('file')->getData();
+            if($imgFile){
+                $newFileName = $this->uploadImage($imgFile, $slugger);
+                $member->setImage($newFileName);
+            }
+            $repo->save($member,$accountId, $clubId, true);
+            return $this->redirectToRoute('Members', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render('main/adding-members.html.twig',['form'=>$form->createView()]);
+        //['form'=>$form->createView()]
     }
+
 
 
     //function to rename image file and upload it to images folder

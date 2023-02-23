@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Account;
+use App\Entity\Clubs;
 use App\Entity\Member;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,7 +23,7 @@ class MemberRepository extends ServiceEntityRepository
         parent::__construct($registry, Member::class);
     }
 
-    public function save(Member $entity, bool $flush = false): void
+    public function save(Member $entity, Account $accRepo, Clubs $clubRepo, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -55,6 +57,9 @@ class MemberRepository extends ServiceEntityRepository
             ->getArrayResult()
         ;
     }
+
+
+
 //    /**
 //     * @return Member[] Returns an array of Member objects
 //     */

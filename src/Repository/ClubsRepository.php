@@ -39,6 +39,23 @@ class ClubsRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+    * @return Clubs Returns an array of Clubs objects
+    */
+    public function findClubId($value): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id')
+            ->Where('c.clubName like :val')
+            ->setParameter('val', '%' .$value. '%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
 //    /**
 //     * @return Clubs[] Returns an array of Clubs objects
 //     */

@@ -56,6 +56,24 @@ class AccountRepository extends ServiceEntityRepository implements PasswordUpgra
         $this->save($user, true);
     }
 
+
+    //SELECT id FROM account WHERE studen_id = "GCC210018";
+
+    /**
+    * @return Account Returns an array of Account objects
+    */
+    public function findAccountId($value): array
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a.id')
+            ->andWhere('a.studenId = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
 //    /**
 //     * @return Account[] Returns an array of Account objects
 //     */

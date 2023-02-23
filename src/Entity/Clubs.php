@@ -33,9 +33,13 @@ class Clubs
     #[ORM\OneToMany(mappedBy: 'clubId', targetEntity: Member::class, orphanRemoval: true)]
     private Collection $clubMember;
 
+    #[ORM\OneToMany(mappedBy: 'club', targetEntity: Activities::class)]
+    private Collection $activities_club;
+
     public function __construct()
     {
         $this->clubMember = new ArrayCollection();
+        $this->activities_club = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -127,6 +131,36 @@ class Clubs
             // set the owning side to null (unless already changed)
             if ($clubMember->getClubId() === $this) {
                 $clubMember->setClubId(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activities>
+     */
+    public function getActivitiesClub(): Collection
+    {
+        return $this->activities_club;
+    }
+
+    public function addActivitiesClub(Activities $activitiesClub): self
+    {
+        if (!$this->activities_club->contains($activitiesClub)) {
+            $this->activities_club->add($activitiesClub);
+            $activitiesClub->setClub($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivitiesClub(Activities $activitiesClub): self
+    {
+        if ($this->activities_club->removeElement($activitiesClub)) {
+            // set the owning side to null (unless already changed)
+            if ($activitiesClub->getClub() === $this) {
+                $activitiesClub->setClub(null);
             }
         }
 

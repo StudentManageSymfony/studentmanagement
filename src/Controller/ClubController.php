@@ -66,4 +66,13 @@ class ClubController extends AbstractController
         }
         return $this->redirectToRoute('Club');
     }
+    
+    // /**
+    //  * @Route("club/{id}", name="RouteName")
+    //  */
+    // public function FunctionName(ClubsRepository $repo, string $id): Response
+    // {
+    //     $club = $repo->findClubId($id);
+    //     return $this->json($club);
+    // }
 }

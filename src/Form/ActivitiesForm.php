@@ -1,6 +1,8 @@
 <?php
     namespace App\Form;
 
+use App\Entity\Clubs;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -26,13 +28,10 @@ use Symfony\Component\Form\FormBuilderInterface;
             ->add('StartDate', DateType::class, ['required'=>true])
             ->add('StartTime', TimeType::class, ['required'=>true])
             ->add('EndTime', TimeType::class, ['required'=>true])
-            ->add('Organizer', ChoiceType::class, ['required'=>true,
-                                                    'choices'=>[
-                                                        'English Speaking'=>'English Speaking',
-                                                        'Book'=>'Book',
-                                                        'Media'=>'Media'
-
-            ]])
+            ->add('Organizer', EntityType::class, [
+                'class'=>Clubs::class, 
+                'choice_label'=>'clubName'
+            ])
             ->add('Submit', SubmitType::class)
 
             ;
