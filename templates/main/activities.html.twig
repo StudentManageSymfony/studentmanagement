@@ -67,30 +67,18 @@
                                     <br>
                                     <span>Score: </span>{{ac.Score}}
                                     
-                                    {% if currentDate < ac.StartDate %}
-                                        
-                                    <br>
-                                    <span style="color:#FFC93C;">Upcoming event...</span>
-                                    <br>
-                                    {% if currentDate == ac.StartDate %}
-                                    
-                                    {% if currentTime >= ac.StartTime and currentTime <= EndTime %}
-                                        
-                                    
-                                    <br>
-                                    <span style="color:green;">Event is taking place</span>
-                                    <br>
-                                    {% endif %}
-                                    
-                                    
-                                    {% endif %}
-
+                                    {% if 'now'|date('d-m-Y') < ac.StartDate|date('d-m-Y') %}   
+                                        <br>
+                                            <span style="color:#FFC93C;">Upcoming event...</span>
+                                        <br>
+                                    {% elseif 'now'|date('H:i') >= ac.StartTime|date('H:i') and 'now'|date('H:i') <= ac.EndTime|date('H:i')  %}
+                                        <br>
+                                            <span style="color:green;">Event is taking place</span>
+                                        <br>
                                     {% else %}
-                                    <br>
-                                    <span style="color:red;">Event ended</span>
-                                    <br>
-                                    
-
+                                        <br>
+                                            <span style="color:red;">Event ended</span>
+                                        <br>
                                     {% endif %}
                                 </div>
                             </div>
