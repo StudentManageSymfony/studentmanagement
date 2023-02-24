@@ -97,7 +97,6 @@ class AccountRepository extends ServiceEntityRepository implements PasswordUpgra
     public function findStudentId($value): array
     {
         return $this->createQueryBuilder('a')
-            ->select('a.studenName')
             ->Where('a.studenId = :val')
             ->setParameter('val', $value)
             ->getQuery()

@@ -68,52 +68,57 @@ class MemberController extends AbstractController
         return $this->render('main/check-members.html.twig', []);
     }
 
-    // /**
-    //  * @Route("/adding-members/{id}", name="addMember")
-    //  */
-    // public function addMember(string $id, Request $req, AccountRepository $accId, ClubsRepository $clubId): Response
-    // {
-
-        
-    //     return $this->render('main/adding-members.html.twig', []);
-    // }
 
 
 
     /**
      * @Route("/adding-members/{stdID}", name="addMember")
      */
-    public function addingMemberAction(String $stdID,MemberRepository $repo, Request $req, SluggerInterface $slugger, AccountRepository $account, ClubsRepository $clubsID): Response
+    public function addingMemberAction(String $stdID,MemberRepository $repo, Request $req, SluggerInterface $slugger, AccountRepository $account, ClubsRepository $clubs): Response
     {
         $member = new Member();
-        $form = $this->createForm(MemberType::class, $member);
         
         //get Student name fron stdID
-        $studentName = $account->findStudentId($stdID);
-        $stdName = $studentName[0];
+        $accountObj = $account->findOneBy(['studenId'=>$stdID]);
+        $stdName =$accountObj->getStudenName();
+        // //get Account ID from stdID
+        $accountId = $accountObj->getId();
+
         
 
-        //get Account ID from stdID
-        $studentId = $stdID;
+        // $member->setAccountId($accountObj);
+        $form = $this->createForm(MemberType::class, $member);
 
-        // $member->setAccountId($studentId);
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
 
+            
+            $getData = [];
+            $getClubName = $req->query->get("ClubName");
+            $clubObj = $clubs->findClubId($getClubName);
+            $getData1 = $clubObj;
+            
+            $imgFile = $form->get('file')->getData();
+            $accid = $req->request->get("accid");
+            $getData[] = $accid;
+            $role = $member->getMemberRole();
+            $getData[] = $role;
+            $clubname = $member->getClubId()->getClubName();
+            $getData[] = $clubname;
+            //Có account id rồi thì sẽ findby để lấy về 1 object account và add nó vào member
 
-            // $club = $clubsID->findClubId($getClubId);
-            // $clubId = $club[0];
-
-
-            // $imgFile = $form->get('file')->getData();
-            // if($imgFile){
-            //     $newFileName = $this->uploadImage($imgFile, $slugger);
-            //     $member->setImage($newFileName);
-            // }
+            if($imgFile){
+                $newFileName = $this->uploadImage($imgFile, $slugger);
+                    $getData[]=$newFileName;
+            }
+            return $this->json($getData);
+            
             // $repo->save($member,$accountId, $clubId, true);
             // return $this->redirectToRoute('Members', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('main/adding-members.html.twig',['form'=>$form->createView(), 'studentName'=>$stdName, 'studentId'=>$studentId]);
+        return $this->render('main/adding-members.html.twig',['form'=>$form->createView(),
+        'studentId'=>$stdID,
+        'studentName'=>$stdName, 'accountId'=>$accountId]);
         //['form'=>$form->createView()]
     }
 

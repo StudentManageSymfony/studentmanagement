@@ -27,24 +27,26 @@
                         <input type="text" name="studentID" id="studentID" class="formbold-form-input"
                         value="{{studentId}}"/>
                         {# <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/> #}
-                        {{ form_widget(form.accountId, {'attr':{'class':'formbold-form-input'} }) }}
+                        {# {{ form_widget(form.accountId, {'attr':{'class':'formbold-form-input'} }) }} #}
                         {# {{ form_widget(form, {'attr':{'class':'formbold-form-input'} }) }} #}
+                         <input type="hidden" name="accid" id="accid" class="formbold-form-input"
+                        value="{{accountId}}"/>
                     </div>
                     
                         
                     
                     <div>
                         <label for="lastname" class="formbold-form-label"> Member Name: </label>
-                        {% for stdName in studentName %}
+                        
                         <input type="text" name="memberName" id="lastname" placeholder="Ex Nguyễn Văn A" class="formbold-form-input"
-                        value="{{stdName}}"/>
-                        {% endfor %}
+                        value="{{studentName}}"/>
+                        
                     </div>
                     
                 </div>
 
                 <div class="formbold-input-flex">
-                    <div name="ClubName">
+                    <div name="clubName">
                         <label for="" class="formbold-form-label"> Club Name: </label>
                         {{ form_widget(form.clubId, {'attr':{'class':'formbold-form-input', 'name':'ClubName'} }) }}
                     </div>

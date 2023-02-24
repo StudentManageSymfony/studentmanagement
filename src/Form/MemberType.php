@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Clubs;
 use App\Entity\Member;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,7 +19,7 @@ class MemberType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->setMethod("GET")
+            // ->setMethod("GET")
             ->add('memberRole', ChoiceType::class, [
                                                     'choices'=>[
                                                                 'Leader'=>'0',
@@ -31,7 +33,11 @@ class MemberType extends AbstractType
                                             'mapped'=> false
             ])
             ->add('image', HiddenType::class, ['required'=> false])
-            ->add('accountId', HiddenType::class)
+            ->add('accid', HiddenType::class,[
+                'mapped'=>false
+            ])
+            ->add('clubId', EntityType::class, ['class'=>Clubs::class, 
+            'choice_label'=>'clubName'])
             // ->add('clubId', TextType::class)
             ->add('submit', SubmitType::class)
         ;
