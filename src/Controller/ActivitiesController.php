@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\Time;
 
 class ActivitiesController extends AbstractController
 {
@@ -20,7 +21,9 @@ class ActivitiesController extends AbstractController
     public function showListActivities(ActivitiesRepository $repo): Response
     {
         $showActivities = $repo->findAll();
-        return $this->render('main/activities.html.twig', ['activity'=>$showActivities]);
+        $getCurrentDate = new \DateTime;
+        $getCurrentTime = new Time;
+        return $this->render('main/activities.html.twig', ['activity'=>$showActivities, 'currentDate'=>$getCurrentDate, 'currentTime'=>$getCurrentTime]);
     }
 
 
@@ -96,8 +99,5 @@ class ActivitiesController extends AbstractController
             return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
             $id->getId();
     }
-
-
-
 
 }

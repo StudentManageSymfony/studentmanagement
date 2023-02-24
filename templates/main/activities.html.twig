@@ -66,8 +66,32 @@
                                     <span>Organizer: </span>{{ac.Organizer}}
                                     <br>
                                     <span>Score: </span>{{ac.Score}}
-                                    <br><br>
-                                    <a style="text-decoration: none;" href="">Click here to register</a>
+                                    
+                                    {% if currentDate < ac.StartDate %}
+                                        
+                                    <br>
+                                    <span style="color:#FFC93C;">Upcoming event...</span>
+                                    <br>
+                                    {% if currentDate == ac.StartDate %}
+                                    
+                                    {% if currentTime >= ac.StartTime and currentTime <= EndTime %}
+                                        
+                                    
+                                    <br>
+                                    <span style="color:green;">Event is taking place</span>
+                                    <br>
+                                    {% endif %}
+                                    
+                                    
+                                    {% endif %}
+
+                                    {% else %}
+                                    <br>
+                                    <span style="color:red;">Event ended</span>
+                                    <br>
+                                    
+
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>

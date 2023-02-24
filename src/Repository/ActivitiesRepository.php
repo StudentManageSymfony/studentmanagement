@@ -39,6 +39,25 @@ class ActivitiesRepository extends ServiceEntityRepository
         }
     }
 
+
+
+    /**
+    * @return Activities[] Returns an array of Activities objects
+    */
+    public function findByExampleField($value): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('a.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
 //    /**
 //     * @return Activities[] Returns an array of Activities objects
 //     */

@@ -38,6 +38,8 @@ class Activities
     #[ORM\ManyToOne(inversedBy: 'activities_club')]
     private ?Clubs $club = null;
 
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,5 +140,10 @@ class Activities
 
         return $this;
     }
+
+    // public function __toString()
+    // {
+    //     return $this->Organizer;
+    // }
 
 }

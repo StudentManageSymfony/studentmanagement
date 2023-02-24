@@ -30,7 +30,8 @@ use Symfony\Component\Form\FormBuilderInterface;
             ->add('EndTime', TimeType::class, ['required'=>true])
             ->add('Organizer', EntityType::class, [
                 'class'=>Clubs::class, 
-                'choice_label'=>'clubName'
+                'choice_label'=>'clubName',
+                'empty_data' => ''
             ])
             ->add('Submit', SubmitType::class)
 

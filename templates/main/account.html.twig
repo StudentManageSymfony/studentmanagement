@@ -30,64 +30,47 @@
         <div class="pr">
             <form class="row g-3">
                 <div class="col-md-6">
-                    <label for="inputId" class="form-label">Member ID</label>
-                    <input type="email" class="form-control" id="inputId" readonly>
-                    {# {{ form_widget(formname, {'attr':{'type':'email'}, {'class':'form-control'}, {'id':'inputId'} {'readonly'} }) }} #}
+                {% for acc in account %}
+                    
+                
+                    <label for="inputId" class="form-label">Member ID: {{acc.studenId}}</label>
+                    {# <input type="email" class="form-control" id="inputId" readonly> #}
+                    {# {{ form_widget(account.studenId, {'attr':{'class':'form-control'} }) }} #}
                 </div>
                 <div class="col-md-6">
-                    <label for="inputName" class="form-label">Member Name</label>
-                    <input type="text" class="form-control" id="inputName" readonly>
+                    <label for="inputName" class="form-label">Member Name: {{acc.studenName}}</label>
+                    {# <input type="text" class="form-control" id="inputName" readonly> #}
+                    {# {{ form_widget(account.studenName, {'attr':{'class':'form-control'} }) }} #}
                     {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'form-control'}, {'id':'inputName'}, {'readonly'} }) }} #}
                 </div>
                 <div class="col-6">
-                    <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Ex: datdmgcc21047@fpt.ed.vn">
+                    <label for="inputEmail" class="form-label">Email: {{acc.email}}</label>
+                    {# <input type="email" class="form-control" id="inputEmail" readonly> #}
+                    {# {{ form_widget(account.email, {'attr':{'class':'form-control'} }) }} #}
                     {# {{ form_widget(formname, {'attr':{'type':'email'}, {'class':'form-control'}, {'id':'inputEmail'}, {'placeholder':'Ex: datdmgcc21047@fpt.ed.vn'} }) }} #}
                 </div>
                 <div class="col-6">
-                    <label for="inputDate" class="form-label">Date of Birth</label>
-                    <input type="date" class="form-control" id="inputDate">
+                    <label for="inputDate" class="form-label">Date of Birth: {{acc.dateOfBirth|date('d/m/Y')}}</label >
+                    {# <input type="date" class="form-control" id="inputDate" readonly> #}
+                    {# {{ form_widget(account.dateOfBirth, {'attr':{'class':'form-control'} }) }} #}
                     {# {{ form_widget(formname, {'attr':{'type':'date'}, {'class':'form-control'}, {'id':'inputDate'} }) }} #}
                 </div>
                 <div class="col-6">
-                    <label for="inputMajor" class="form-label">Major</label>
-                    <select id="inputMajor" class="form-select">
-                        <option selected>Choose...</option>
-                        <option value="0">SE - Computing</option>
-                        <option value="1">BA - Event</option>
-                        <option value="2">BA - Business</option>
-                        <option value="3">BA - Marketing</option>
-                        <option value="4">GD - Graphic Design</option>
-                        <option value="5">PDP - Student Service</option>
-                    </select>
+                    <label for="inputMajor" class="form-label">Major: {{acc.major}}</label>
+                    {# <input type="text" class="form-control" id="inputMajor" readonly> #}
+                    {# {{ form_widget(account.major, {'attr':{'class':'form-control'} }) }} #}
                 </div>
                 <!-- Check -->
                 <div class="check col-md-6">
-                    Gender
-                    <div class="check-box">
-                        <div class="form-check col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            {# {{ form_widget(formname, {'attr':{'type':'radio'}, {'class':'form-check-input'}, {'id':'flexRadioDefault1'}, {'name':'flexRadioDefault'} }) }} #}
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Male
-                            </label>
-                        </div>
-                        <div class="form-check col-2">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            {# {{ form_widget(formname, {'attr':{'type':'radio'}, {'class':'form-check-input'}, {'id':'flexRadioDefault2'}, {'name':'flexRadioDefault'} }) }} #}
+                {% if acc.gender == true %}
+                <label for="inputGender" class="form-label">Gender: Male</label>
+                {# <input type="text" class="form-control" id="inputGender" readonly> #}
+                {% else %}
+                <label for="inputGender" class="form-label">Gender: Female</label>
+                {% endif %}
 
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Female
-                            </label>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
-                <div class="button">
-                    <button type="submit" class="btn btn-primary btn-lg" style="width: 50%;">Confirm</button>
-                </div>
-                <a href="../html/password-change.html" style="text-decoration: none; text-align: center; color: #FF7000;">
-                    <h6>Do you want to change your password?</h6>
-                </a>
             </form>
         </div>
     </div>

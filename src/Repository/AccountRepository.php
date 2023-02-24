@@ -74,6 +74,22 @@ class AccountRepository extends ServiceEntityRepository implements PasswordUpgra
     }
 
 
+    /**
+    * @return Account[] Returns an array of Account objects
+    */
+    //SELECT studen_id, studen_name, email, date_of_birth, major, gender FROM `account` WHERE email="phucadmin@gmail.com"; 
+    public function findAllByEmail($value): array
+    {
+        return $this->createQueryBuilder('a')
+            // ->select('a.studenId, a.studenName, a.email, a.dateOfBirth, a.major, a.gender')
+            ->Where('a.email = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+
 //    /**
 //     * @return Account[] Returns an array of Account objects
 //     */

@@ -49,7 +49,7 @@
                             color: #000;
                         }
                     </style>
-
+                    {% if app.user %}
             <div class="collapse navbar-collapse justify-content-center" id="navbarMain">
                 <div class="navbar-nav">
                     <a class="nav-link active" href="/homepage">Home</a>
@@ -60,11 +60,11 @@
                     {% endif %}
                     <a class="nav-link" href="/attendance" style="color: #ffffff;">Attendance</a>
                     <a class="nav-link" href="/activities"style="color: #ffffff;">Activities</a>
-                    <a class="nav-link" href="/account"style="color: #ffffff;">Account</a>
+                    <a class="nav-link" href="/account/{{app.user.userIdentifier }}"style="color: #ffffff;">Account</a>
                 </div>
             </div>
-                {% if app.user %}
-                    <a href="#" class="nav-item nav-link first">Welcome {{app.user.userIdentifier }} </a>  
+                
+                    <a href="" class="nav-item nav-link first">Welcome {{app.user.userIdentifier }} </a>  
                     <a href="{{path('Logout')}}" class="nav-item nav-link second">Logout</a>            
                 {% endif %}
             </nav>
