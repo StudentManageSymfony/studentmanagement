@@ -34,9 +34,6 @@ class Activities
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $EndTime = null;
 
-    #[ORM\Column(length: 40)]
-    private ?string $Organizer = null;
-
     #[ORM\ManyToOne(inversedBy: 'activities_club')]
     private ?Clubs $club = null;
 
@@ -123,18 +120,6 @@ class Activities
     public function setEndTime(\DateTimeInterface $EndTime): self
     {
         $this->EndTime = $EndTime;
-
-        return $this;
-    }
-
-    public function getOrganizer(): ?string
-    {
-        return $this->Organizer;
-    }
-
-    public function setOrganizer(string $Organizer): self
-    {
-        $this->Organizer = $Organizer;
 
         return $this;
     }

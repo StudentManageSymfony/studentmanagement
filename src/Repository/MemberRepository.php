@@ -23,7 +23,7 @@ class MemberRepository extends ServiceEntityRepository
         parent::__construct($registry, Member::class);
     }
 
-    public function save(Member $entity, $accRepo, $clubRepo, bool $flush = false): void
+    public function save(Member $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 

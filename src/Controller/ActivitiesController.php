@@ -37,13 +37,20 @@ class ActivitiesController extends AbstractController
 
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
+
             $imgFile = $form->get('file')->getData();
+
+            //return a object with club
+            $clubId = $addActivities->getClub();
+
+            $addActivities->setClub($clubId);
             if($imgFile){
                 $newFileName = $this->uploadImage($imgFile, $slugger);
                 $addActivities->setImage($newFileName);
             }
-            $repo->save($addActivities, true);
-            return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
+            return $this->json($clubId);
+            // $repo->save($addActivities, true);
+            // return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('main/adding-activities.html.twig', ['form'=>$form->createView()]);
     }
