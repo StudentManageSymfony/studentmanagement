@@ -34,22 +34,15 @@
                 <div class="formbold-input-flex">
                     <div name="ClubName">
                         <label for="" class="formbold-form-label"> Club Name: </label>
-
-                        {# <select type="" name="" id="" placeholder="Ex: English Speaking"class="formbold-form-input">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        </select>
-                    </div> #}
-                    {{ form_widget(form.clubId, {'attr':{'class':'formbold-form-input', 'name':'ClubName'} }) }}
+                        {{ form_widget(form.clubId, {'attr':{'class':'formbold-form-input', 'name':'ClubName'} }) }}
+                    </div>
                 </div>
 
-                <div class="formbold-input-radio-wrapper">
+                <div class="">
                     <label for="jobtitle" class="formbold-form-label">Role:  </label>
-                    {{ form_widget(form.memberRole, {'attr':{'class':''}}) }}
+                    {{ form_widget(form.memberRole, {'attr':{'class':'formbold-input-radio-wrapper'}}) }}
                 </div>
+
                 <div class="formbold-form-label">
                     <label class="photo"  for="image-vertical">Image: </label>
                     {# <input type="file" name="Pro_image" id="Pro_image" class="form-control" value=""> #}
@@ -58,8 +51,12 @@
                     {% set img = form.image.vars.value %}
                     {# {{ form_widget(formname, {'attr':{'type':'file'}, {'class':'form-control'}, {'id':'Pro_image'}, {'value':''}, {'name':'Pro_image'} }) }} #}
                 </div>
-                {# <button class="formbold-btn"> Submit </button> #}
-                {{ form_widget(form.submit, {'attr':{'class':''}}) }}
+
+                <div class="formbold-btn"> {{ form_widget(form.submit, {'attr':{'class':''}}) }} </div>
+                {# <div class="formbold-btn"> #}
+                    
+                {# </div> #}
+                
             {# </form> #}
             {{ form_end(form) }}
             </div>
