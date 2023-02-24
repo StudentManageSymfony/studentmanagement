@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Activities;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DateTimeZone;
 
 /**
  * @extends ServiceEntityRepository<Activities>
@@ -14,6 +15,8 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Activities[]    findAll()
  * @method Activities[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 class ActivitiesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
