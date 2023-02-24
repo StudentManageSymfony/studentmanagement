@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActivitiesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +39,14 @@ class Activities
 
     #[ORM\ManyToOne(inversedBy: 'activities_club')]
     private ?Clubs $club = null;
+
+    #[ORM\OneToMany(mappedBy: 'Activities', targetEntity: ActivitiesHistory::class, orphanRemoval: true)]
+    private Collection $activitiesHistories;
+
+    public function __construct()
+    {
+        $this->activitiesHistories = new ArrayCollection();
+    }
 
     
 
@@ -145,5 +155,35 @@ class Activities
     // {
     //     return $this->Organizer;
     // }
+
+    /**
+     * @return Collection<int, ActivitiesHistory>
+     */
+    public function getActivitiesHistories(): Collection
+    {
+        return $this->activitiesHistories;
+    }
+
+    public function addActivitiesHistory(ActivitiesHistory $activitiesHistory): self
+    {
+        if (!$this->activitiesHistories->contains($activitiesHistory)) {
+            $this->activitiesHistories->add($activitiesHistory);
+            $activitiesHistory->setActivities($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivitiesHistory(ActivitiesHistory $activitiesHistory): self
+    {
+        if ($this->activitiesHistories->removeElement($activitiesHistory)) {
+            // set the owning side to null (unless already changed)
+            if ($activitiesHistory->getActivities() === $this) {
+                $activitiesHistory->setActivities(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

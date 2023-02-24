@@ -95,59 +95,27 @@
     </div>
 </div>
 
+    
+
 <div class="headings">
     List of <span>clubs</span>  
 </div>
     <div class="container">
         <div class="row">
+    {% for show in showClub %}
         <div class="col-md-4 mb-3 mb-lg-0 py-4">
-            <div class="hover hover-3 text-white rounded"><img src="../images/banner1.jpg" alt="">
+            <div class="hover hover-3 text-white rounded"><img src="../images/z4134104443236_302f601d0285eb69d4bdb4bb69c355d7.jpg" alt="">
             <div class="hover-overlay"></div>
             <div class="hover-3-content px-5 py-4">
-                <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>English Speaking Club</h3>
-                <p class="hover-3-quote font-weight-light mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quidem iusto quaerat. Incidunt similique quas quos, ea animi enim neque iusto dolores officia nisi, inventore, a quis. Id, animi atque.</p>
+                <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>{{show.clubName}}</h3>
+                <p class="hover-3-quote font-weight-light mb-0">{{show.description}}</p>
             </div>
             </div>
         </div>
-        <div class="col-md-4 mb-3 mb-lg-0 py-4">
-            <div class="hover hover-3 text-white rounded"><img src="../images/banner2.JPG" alt="">
-            <div class="hover-overlay"></div>
-            <div class="hover-3-content px-5 py-4">
-                <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>Media Club</h3>
-                <p class="hover-3-quote font-weight-light mb-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam voluptatum tenetur cumque reiciendis voluptatem vel fuga doloribus incidunt atque exercitationem pariatur amet ullam delectus, quo ad error aspernatur officia debitis.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3 mb-lg-0 py-4">
-            <div class="hover hover-3 text-white rounded"><img src="../images/banner3.JPG" alt="">
-            <div class="hover-overlay"></div>
-            <div class="hover-3-content px-5 py-4">
-                <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>Book Club</h3>
-                <p class="hover-3-quote font-weight-light mb-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam voluptatum tenetur cumque reiciendis voluptatem vel fuga doloribus incidunt atque exercitationem pariatur amet ullam delectus, quo ad error aspernatur officia debitis.</p>
-            </div>
-            </div>
-        </div>
-        
-        <div class="col-md-4 mb-3 mb-lg-0 py-4">
-            <div class="hover hover-3 text-white rounded"><img src="../images/banner3.JPG" alt="">
-            <div class="hover-overlay"></div>
-            <div class="hover-3-content px-5 py-4">
-                <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>Vovinam Club</h3>
-                <p class="hover-3-quote font-weight-light mb-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam voluptatum tenetur cumque reiciendis voluptatem vel fuga doloribus incidunt atque exercitationem pariatur amet ullam delectus, quo ad error aspernatur officia debitis.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-3 mb-lg-0 py-4">
-            <div class="hover hover-3 text-white rounded"><img src="../images/banner1.JPG" alt="">
-            <div class="hover-overlay"></div>
-            <div class="hover-3-content px-5 py-4">
-                <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>Art Club</h3>
-                <p class="hover-3-quote font-weight-light mb-0">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam voluptatum tenetur cumque reiciendis voluptatem vel fuga doloribus incidunt atque exercitationem pariatur amet ullam delectus, quo ad error aspernatur officia debitis.</p>
-            </div>
-            </div>
-        </div>
+    {% endfor %}
         </div>
     </div>
+    
 
 
         {% include 'footer.html.twig' %}

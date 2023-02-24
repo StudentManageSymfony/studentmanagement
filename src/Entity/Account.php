@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AccountRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -45,6 +47,14 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToOne(mappedBy: 'accountId', cascade: ['persist', 'remove'])]
     private ?Member $accountMember = null;
+
+    #[ORM\OneToMany(mappedBy: 'account', targetEntity: ActivitiesHistory::class, orphanRemoval: true)]
+    private Collection $activitiesHistories;
+
+    public function __construct()
+    {
+        $this->activitiesHistories = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -208,6 +218,36 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->accountMember = $accountMember;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ActivitiesHistory>
+     */
+    public function getActivitiesHistories(): Collection
+    {
+        return $this->activitiesHistories;
+    }
+
+    public function addActivitiesHistory(ActivitiesHistory $activitiesHistory): self
+    {
+        if (!$this->activitiesHistories->contains($activitiesHistory)) {
+            $this->activitiesHistories->add($activitiesHistory);
+            $activitiesHistory->setAccount($this);
+        }
+
+        return $this;
+    }
+
+    public function removeActivitiesHistory(ActivitiesHistory $activitiesHistory): self
+    {
+        if ($this->activitiesHistories->removeElement($activitiesHistory)) {
+            // set the owning side to null (unless already changed)
+            if ($activitiesHistory->getAccount() === $this) {
+                $activitiesHistory->setAccount(null);
+            }
+        }
 
         return $this;
     }

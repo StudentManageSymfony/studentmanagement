@@ -62,7 +62,7 @@ class MemberController extends AbstractController
                 'error'=>$error
             ]);      
         }else{
-            return $this->redirectToRoute('addMember', ['id'=>$getDataMember], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('addMember', ['stdID'=>$getDataMember], Response::HTTP_SEE_OTHER);
         }
         }else 
         return $this->render('main/check-members.html.twig', []);
@@ -81,35 +81,43 @@ class MemberController extends AbstractController
 
 
     /**
-     * @Route("/adding-members/{id}", name="addMember")
+     * @Route("/adding-members/{stdID}", name="addMember")
      */
-    public function addingMemberAction(MemberRepository $repo, Request $req, SluggerInterface $slugger, AccountRepository $accId, ClubsRepository $clubsID): Response
+    public function addingMemberAction(String $stdID,MemberRepository $repo, Request $req, SluggerInterface $slugger, AccountRepository $account, ClubsRepository $clubsID): Response
     {
         $member = new Member();
         $form = $this->createForm(MemberType::class, $member);
+        
+        //get Student name fron stdID
+        $studentName = $account->findStudentId($stdID);
+        $stdName = $studentName[0];
+        
 
+        //get Account ID from stdID
+        $studentId = $stdID;
+
+        // $member->setAccountId($studentId);
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
 
-            //get data from Form
-            $getAccountId = $req->query->get("StudentId");
-            $getClubId = $req->query->get("ClubName");
-            //get ID 
-            $accountId = $accId->findAccountId( $getAccountId);
-            $clubId = $clubsID->findClubId($getClubId);
+
+            // $club = $clubsID->findClubId($getClubId);
+            // $clubId = $club[0];
 
 
-            $imgFile = $form->get('file')->getData();
-            if($imgFile){
-                $newFileName = $this->uploadImage($imgFile, $slugger);
-                $member->setImage($newFileName);
-            }
-            $repo->save($member,$accountId, $clubId, true);
-            return $this->redirectToRoute('Members', [], Response::HTTP_SEE_OTHER);
+            // $imgFile = $form->get('file')->getData();
+            // if($imgFile){
+            //     $newFileName = $this->uploadImage($imgFile, $slugger);
+            //     $member->setImage($newFileName);
+            // }
+            // $repo->save($member,$accountId, $clubId, true);
+            // return $this->redirectToRoute('Members', [], Response::HTTP_SEE_OTHER);
         }
-        return $this->render('main/adding-members.html.twig',['form'=>$form->createView()]);
+        return $this->render('main/adding-members.html.twig',['form'=>$form->createView(), 'studentName'=>$stdName, 'studentId'=>$studentId]);
         //['form'=>$form->createView()]
     }
+
+    
 
 
 

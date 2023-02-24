@@ -31,8 +31,8 @@ class MemberType extends AbstractType
                                             'mapped'=> false
             ])
             ->add('image', HiddenType::class, ['required'=> false])
-            ->add('accountId', TextType::class)
-            ->add('clubId', TextType::class)
+            ->add('accountId', HiddenType::class)
+            // ->add('clubId', TextType::class)
             ->add('submit', SubmitType::class)
         ;
     }

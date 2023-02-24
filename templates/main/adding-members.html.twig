@@ -17,18 +17,30 @@
             <div class="formbold-form-wrapper">
             {# <form action="" method="GET"> #}
             {{ form_start(form) }}
+            
+                
+            
             {# {{ form_start(form) }} #}
                 <div class="formbold-input-flex">
                     <div name="StudentId">
                         <label for="firstname" class="formbold-form-label"> Student ID: </label>
+                        <input type="text" name="studentID" id="studentID" class="formbold-form-input"
+                        value="{{studentId}}"/>
                         {# <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/> #}
-                        {{ form_widget(form.accountId, {'attr':{'class':'formbold-form-input', 'name':'StudentId'} }) }}
+                        {{ form_widget(form.accountId, {'attr':{'class':'formbold-form-input'} }) }}
                         {# {{ form_widget(form, {'attr':{'class':'formbold-form-input'} }) }} #}
                     </div>
+                    
+                        
+                    
                     <div>
                         <label for="lastname" class="formbold-form-label"> Member Name: </label>
-                        <input type="text" name="memberName" id="lastname" placeholder="Ex Nguyễn Văn A" class="formbold-form-input"/>
+                        {% for stdName in studentName %}
+                        <input type="text" name="memberName" id="lastname" placeholder="Ex Nguyễn Văn A" class="formbold-form-input"
+                        value="{{stdName}}"/>
+                        {% endfor %}
                     </div>
+                    
                 </div>
 
                 <div class="formbold-input-flex">
@@ -43,7 +55,7 @@
                         <option>5</option>
                         </select>
                     </div> #}
-                    {{ form_widget(form.clubId, {'attr':{'class':'formbold-form-input', 'name':'ClubName'} }) }}
+                    {# {{ form_widget(form.clubId, {'attr':{'class':'formbold-form-input'} }) }} #}
                 </div>
 
                 <div class="formbold-input-radio-wrapper">
@@ -60,6 +72,7 @@
                 </div>
                 {# <button class="formbold-btn"> Submit </button> #}
                 {{ form_widget(form.submit, {'attr':{'class':''}}) }}
+                
             {# </form> #}
             {{ form_end(form) }}
             </div>
