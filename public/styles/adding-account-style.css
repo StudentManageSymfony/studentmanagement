@@ -55,7 +55,9 @@ nav.navbar{
 .form-check{
     margin-left: 20px;
 }
-
+.check{
+    display: flex;
+}
 .button{
     display: flex;
     align-items: center;
@@ -86,4 +88,9 @@ nav.navbar{
     resize: none;
 }
    
-   
+div.row.g-3{
+    border: 3px solid var(--blue_heavy) !important;   
+    border-radius: 20px; 
+    padding: 30px 30px 30px 30px;
+    margin: 30px 50px 30px 50px;
+}

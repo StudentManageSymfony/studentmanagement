@@ -19,7 +19,8 @@
     <div class="cover"> 
         <div class="pr">
             {# <form class="row g-3"> #}
-            {{ form_start(form, {'attr':{'class':'row g-3'} }) }}
+            <div class="row g-3">
+                {{ form_start(form, {'attr':{'class':'row g-3'} }) }}
                 <div class="col-md-3">
                     <label for="inputId" class="form-label">Member ID</label>
                     {# <input type="email" class="form-control" id="inputId"> #}
@@ -58,12 +59,13 @@
                 <!-- Check -->
                 <div class="check col-md-6">
                     Gender
-                    {{ form_widget(form.gender, {'attr':{'class':''} }) }}
+                    {{ form_widget(form.gender, {'attr':{'class':'check'} }) }}
                 </div>
                 {{ form_widget(form.submit, {'attr':{'class':''} }) }}
                 {# <span style="color:green;">{{noti}}</span> #}
             {# </form> #}
             {{ form_end(form) }}
+            </div>
         </div>
     </div>
 </body>
