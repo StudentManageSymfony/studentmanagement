@@ -67,7 +67,7 @@
                                     <br>
                                     <span>Score: </span>{{ac.Score}}
                                     
-                                    {# {% if 'now'|date('d-m-Y') < ac.StartDate|date('d-m-Y') %}   
+                                    {% if 'now'|date('c') < ac.StartDate|date('c')%}   
                                         <br>
                                             <span style="color:#FFC93C;">Upcoming event...</span>
                                         <br>
@@ -75,14 +75,11 @@
                                         <br>
                                             <span style="color:green;">Event is taking place</span>
                                         <br>
-                                    {% else %}~
+                                    {% else %}
                                         <br>
                                             <span style="color:red;">Event ended</span>
                                         <br>
-                                    {% endif %} #}
-                                    
-                                    <br>{{'now'|date('d-m-Y')}} <br>
-                                    {{ac.StartDate|date('d-m-Y')}}
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
