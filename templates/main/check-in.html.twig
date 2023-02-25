@@ -13,27 +13,28 @@
     </div>
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
+        {{ form_start(form) }}
             <form action="" method="POST">
             {# {{ form_start(formname, {'attr':{'action':''}, {'method':'POST'} }) }} #}
                 <div class="formbold-input-flex">
                 <div>
                     <label for="firstname" class="formbold-form-label"> Student ID: </label>
-                    <input type="text" name="" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
+                    <input type="text" name="studentId" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
                     {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
                 </div>
                 <div>
                     <label for="lastname" class="formbold-form-label"> Event/Activities: </label>
-                    <select type="text" name="events" id="" placeholder="" class="formbold-form-input">
+                    {# <select type="text" name="events" id="" placeholder="" class="formbold-form-input">
                         <option>Hung King memorial - A Spiritual return</option>
                         <option>Hung King memorial - A Spiritual return 2</option>
                         <option>Hung King memorial - A Spiritual return 3</option>
                         <option>Hung King memorial - A Spiritual return 4</option>
                         <option>Hung King memorial - A Spiritual return 5</option>
-                    </select>
+                    </select> #}
+                    {{ form_widget(form.activities, {'attr':{'class':'formbold-form-input'} }) }}
                 </div> 
-                <button class="formbold-btn">
-                    ADD
-                </button>
+                {# <button class="formbold-btn">ADD</button> #}
+                {{ form_widget(form.submit, {'attr':{'class':'formbold-btn'} }) }}
             </div>
             </form>
             {# {{ form_end(formname) }} #}
@@ -98,9 +99,10 @@
             </table>
         </div>
     </div>
-        <button class="formbold-btn save">
-            SAVE
-        </button>
+        {# <button class="formbold-btn save">SAVE</button> #}
+        {# {{ form_widget(form.save, {'attr':{'class':''} }) }} #}
+
+        {{ form_end(form) }}
 
     {% include 'footer.html.twig' %}
 {% endblock %}
