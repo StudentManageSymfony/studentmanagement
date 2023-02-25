@@ -56,15 +56,11 @@ class ClubController extends AbstractController
     /**
      * @Route("/deleteClub/{id}", name="DeleteClub")
      */
-    public function deleteClubAction(ClubsRepository $repo, Request $req, Clubs $id): Response
+    public function deleteClubAction(ClubsRepository $repo, Clubs $id): Response
     {
-        $form = $this->createForm(ClubType::class, $id);
-        if($form->handleRequest($req)){
             $repo->remove($id, true);
             return $this->redirectToRoute('Club');
             $id->getId();
-        }
-        return $this->redirectToRoute('Club');
     }
     
     // /**

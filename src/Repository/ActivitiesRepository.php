@@ -43,19 +43,18 @@ class ActivitiesRepository extends ServiceEntityRepository
     }
 
 
+    //SELECT c.club_name, a.score, a.image, a.start_date, a.start_time, a.end_time, a.name FROM activities a, clubs c WHERE a.club_id = c.id; 
 
     /**
     * @return Activities[] Returns an array of Activities objects
     */
-    public function findByExampleField($value): array
+    public function findActivitiesWithClubName(): array
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->select('c.clubName, a.Score, a.Image, a.StartDate, a.StartTime, a.EndTime, a.Name, a.id')
+            ->innerJoin('a.club', 'c')
             ->getQuery()
-            ->getResult()
+            ->getArrayResult()
         ;
     }
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Activities;
 use App\Form\ActivitiesFormType;
 use App\Repository\ActivitiesRepository;
+use App\Repository\ClubsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +19,14 @@ class ActivitiesController extends AbstractController
     /**
      * @Route("/activities", name="Activities")
      */
-    public function showListActivities(ActivitiesRepository $repo): Response
+    public function showListActivities(ActivitiesRepository $activitiesRepo): Response
     {
-        $showActivities = $repo->findAll();
+        $showActivities = $activitiesRepo->findActivitiesWithClubName();
+
         $getCurrentDate = new \DateTime;
         $getCurrentTime = new Time;
         return $this->render('main/activities.html.twig', ['activity'=>$showActivities, 'currentDate'=>$getCurrentDate, 'currentTime'=>$getCurrentTime]);
+        // return $this->json($showActivities);
     }
 
 
@@ -83,6 +86,9 @@ class ActivitiesController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
             $imgFile = $form->get('file')->getData();
+            $clubId = $id->getClub();
+
+            $id->setClub($clubId);
             if($imgFile){
                 $newFileName = $this->uploadImage($imgFile, $slugger);
                 $id->setImage($newFileName);
@@ -100,7 +106,6 @@ class ActivitiesController extends AbstractController
      */
     public function deleteActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id): Response
     {
-        $form = $this->createForm(ActivitiesFormType::class, $id);
         
             $repo->remove($id, true);
             return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);

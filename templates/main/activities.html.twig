@@ -46,7 +46,7 @@
                             <div class="card-left pe-4">
                             {# Image #}
                                 {# <img src="../images/111.jpg" alt=""> #}
-                                {% set img = ac.image %}
+                                {% set img = ac.Image %}
                                 {% if img %}
                                     <img src="{{asset('images/'~img) }}">
                                 {% else %}
@@ -63,7 +63,7 @@
                                     <br>
                                     <span>Time: </span>{{ac.StartTime|date('H:i')}} - {{ac.EndTime|date('H:i')}}
                                     <br>
-                                    {# <span>Organizer: </span>{{ac.Organizer}} #}
+                                    <span>Organizer: </span>{{ac.clubName}}
                                     <br>
                                     <span>Score: </span>{{ac.Score}}
                                     

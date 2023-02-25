@@ -23,7 +23,6 @@
             {# {{ form_start(formname, {'attr': {'class':'example1'}, {'action':'#'} }) }} #}
                 <input type="text" class="searchTerm" placeholder="Search..." name="search">
                 <button type="submit" class="searchButton"><i class="bi bi-search" name="btnSearch"></i></button>
-                {# <a href="/search"><button class="" <i class="bi bi-search" name="btnSearch"></i>> Search </button></a> #}
             </form>
             {# {{ form_end(formname) }} #}
         </div>
@@ -44,40 +43,40 @@
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
-                {% for show in showMember %}
+                {% for srch in search %}
     
 
                 <tbody class="table-striped">
                 <tr class="align-middle">
-                    <th scope="row">{{show.id}}</th>
+                    <th scope="row">{{srch.id}}</th>
                     <td>
-                    {% set img = show.image %}
+                    {% set img = srch.image %}
                     {% if img %}
                         <img src="{{asset('images/'~img) }}">
                     {% else %}
                         <img src="../images/111.jpg">
                     {% endif %}
                     </td>
-                    <td>{{show.studenId}}</td>
-                    <td>{{show.studenName}}</td>
-                    <td>{{show.clubName}}</td>
-                    <td>{{show.clubId}}</td>
+                    <td>{{srch.studenId}}</td>
+                    <td>{{srch.studenName}}</td>
+                    <td>{{srch.clubName}}</td>
+                    <td>{{srch.clubId}}</td>
 
                     <td>
-                    {% if show.memberRole == 0 %}
+                    {% if srch.memberRole == 0 %}
                         Leader
-                    {% elseif show.memberRole == 1 %}
+                    {% elseif srch.memberRole == 1 %}
                         Vice Leader
-                    {% elseif show.memberRole == 2 %}
+                    {% elseif srch.memberRole == 2 %}
                         Cashier
-                    {% elseif show.memberRole == 3 %}
+                    {% elseif srch.memberRole == 3 %}
                         Member
                     {% endif %}
                     </td>
                     
                     <td>
-                        <a href="/editMember/{{show.id}}/{{show.studenId}}"><i class="bi bi-pencil-square"></i></a>
-                        <a href="/deleteMember/{{show.id}}"><i class="bi bi-x-square"></i></a>
+                        <a href="/editMember/{{srch.id}}/{{srch.studenId}}"><i class="bi bi-pencil-square"></i></a>
+                        <a href="/deleteMember/{{srch.id}}"><i class="bi bi-x-square"></i></a>
                     </td>
                 </tr>
                 

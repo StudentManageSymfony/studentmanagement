@@ -60,6 +60,39 @@ class MemberRepository extends ServiceEntityRepository
 
 
 
+    //SELECT m.image, a.studen_id, a.studen_name, c.club_name, c.club_id, m.member_role FROM member m, account a, clubs c WHERE m.  account_id_id=a.id and m.club_id_id=c.id; 
+    /**
+    * @return Member[] Returns an array of Member objects
+    */
+    public function findShowMember(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.image, m.memberRole, a.studenId, a.studenName, c.clubName, c.clubId, m.id')
+            ->innerJoin('m.clubId', 'c')
+            ->innerJoin('m.accountId', 'a')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+
+    /**
+    * @return Member[] Returns an array of Member objects
+    */
+    public function searchMember($value): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.image, m.memberRole, a.studenId, a.studenName, c.clubName, c.clubId, m.id')
+            ->innerJoin('m.clubId', 'c')
+            ->innerJoin('m.accountId', 'a')
+            ->where('a.studenName like :val ')
+            ->setParameter('val', '%' .$value. '%')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+
 //    /**
 //     * @return Member[] Returns an array of Member objects
 //     */
