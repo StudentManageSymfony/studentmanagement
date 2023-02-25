@@ -71,7 +71,7 @@
                                         <br>
                                             <span style="color:#FFC93C;">Upcoming event...</span>
                                         <br>
-                                    {% elseif 'now'|date('H:i') >= ac.StartTime|date('H:i') and 'now'|date('H:i') <= ac.EndTime|date('H:i')  %}
+                                    {% elseif 'now'|date('H:i') >= ac.StartTime|date('H:i') and 'now'|date('H:i') <= ac.EndTime|date('H:i') and 'now'|date('d-m-Y') == ac.StartDate|date('d-m-Y')%}
                                         <br>
                                             <span style="color:green;">Event is taking place</span>
                                         <br>
