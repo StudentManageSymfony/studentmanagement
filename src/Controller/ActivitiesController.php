@@ -106,7 +106,6 @@ class ActivitiesController extends AbstractController
      */
     public function deleteActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id): Response
     {
-        
             $repo->remove($id, true);
             return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
             $id->getId();

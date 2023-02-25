@@ -36,7 +36,7 @@ class CheckinController extends AbstractController
             //get object from 
             $accId = $reg->getRepository(Account::class)->findOneBy(['studenId' => $getStudentId]);
             if($accId == null){
-                $error = "Student id does not exist!!!";
+                $error = "Student id does not exist and not alow be null!!!";
                 return $this->render('main/check-in.html.twig', ['error'=>$error, 'form'=>$form->createView(), 'showCheck'=>$showCheckIn]);
             }
 
@@ -55,5 +55,16 @@ class CheckinController extends AbstractController
             // return $this->json($getAccId);
         }
         return $this->render('main/check-in.html.twig', ['form'=>$form->createView(), 'showCheck'=>$showCheckIn]);
+    }
+
+    
+    /**
+     * @Route("/deleteCheckIn/{id}", name="DeleteCheckIn")
+     */
+    public function deleteCheckInAction(CheckInRepository $repo, Request $req, CheckIn $id): Response
+    {
+        $repo->remove($id, true);
+        return $this->redirectToRoute('Check-in', [], Response::HTTP_SEE_OTHER);
+        $id->getId();
     }
 }

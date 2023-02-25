@@ -33,10 +33,11 @@
                         <option>Hung King memorial - A Spiritual return 4</option>
                         <option>Hung King memorial - A Spiritual return 5</option>
                     </select> #}
+                    
                     {{ form_widget(form.activities, {'attr':{'class':'formbold-form-input'} }) }}
                 </div> 
                 {# <button class="formbold-btn">ADD</button> #}
-                {{ form_widget(form.submit, {'attr':{'class':'formbold-btn'} }) }}
+                {{ form_widget(form.submit, {'attr':{'class':''} }) }}
             </div>
             {# </form> #}
             {{ form_end(form) }}
@@ -72,8 +73,8 @@
                     <td>{{show.StartTime|date('H:i')}}</td>
                     <td>{{show.EndTime|date('H:i')}}</td>
                     <td>
-                        <a href="/editCheckIn/{{show.id}}"><i style="color: #439a97d0;" class="bi bi-pencil-square"></i></a>
-                        <a href="/deleteCheckIn/{{show.id}}"><i style="color: #439a97d0;" class="bi bi-x-square"></i></a>
+                        <a href="editCheckIn/{{show.id}}"><i style="color: #439a97d0;" class="bi bi-pencil-square"></i></a>
+                        <a href="deleteCheckIn/{{show.id}}"><i style="color: #439a97d0;" class="bi bi-x-square"></i></a>
                     </td>
                 
                 </tr>
