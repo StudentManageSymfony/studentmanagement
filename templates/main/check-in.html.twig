@@ -10,16 +10,18 @@
     {% include 'header.html.twig' %}
     <div class="heading">
         <h4>CHECK-IN ACTIVITIES</h4>
+        
     </div>
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
         {{ form_start(form) }}
-            <form action="" method="POST">
+            {# <form action="" method="POST"> #}
             {# {{ form_start(formname, {'attr':{'action':''}, {'method':'POST'} }) }} #}
                 <div class="formbold-input-flex">
                 <div>
                     <label for="firstname" class="formbold-form-label"> Student ID: </label>
                     <input type="text" name="studentId" id="" placeholder="Ex: GCC210147" class="formbold-form-input"/>
+                    <h7 style="color:red;">{{error ?? ""}}</h7>
                     {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'formbold-form-input'}, {'id':''}, {'placeholder':'Ex: GCC210147'}, {'name':''} }) }} #}
                 </div>
                 <div>
@@ -36,7 +38,8 @@
                 {# <button class="formbold-btn">ADD</button> #}
                 {{ form_widget(form.submit, {'attr':{'class':'formbold-btn'} }) }}
             </div>
-            </form>
+            {# </form> #}
+            {{ form_end(form) }}
             {# {{ form_end(formname) }} #}
         </div>
         </div>
@@ -55,54 +58,34 @@
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
+                {% for show in showCheck %}
                 <tbody class="table-striped">
                 <tr class="align-middle">
-                    <th scope="row">1</th>
-                    <th>Hung King memorial - A Spiritual return</th>
-                    <td>15-10-2022</td>
-                    <td>GCC210147</td>
-                    <td>Đặng Minh Đạt</td>
-                    <td>18:00:00</td>
-                    <td>20:00:00</td>
+                
+                    
+                
+                    <th scope="row">{{show.id}}</th>
+                    <th>{{show.Name}}</th>
+                    <td>{{show.StartDate|date('d-m-Y')}}</td>
+                    <td>{{show.studenId}}</td>
+                    <td>{{show.studenName}}</td>
+                    <td>{{show.StartTime|date('H:i')}}</td>
+                    <td>{{show.EndTime|date('H:i')}}</td>
                     <td>
-                        <a href=""><i style="color: #439a97d0;" class="bi bi-pencil-square"></i></a>
-                        <a href=""><i style="color: #439a97d0;" class="bi bi-x-square"></i></a>
+                        <a href="/editCheckIn/{{show.id}}"><i style="color: #439a97d0;" class="bi bi-pencil-square"></i></a>
+                        <a href="/deleteCheckIn/{{show.id}}"><i style="color: #439a97d0;" class="bi bi-x-square"></i></a>
                     </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <th>Event 2</th>
-                    <td>17-08-2022</td>
-                    <td>GCC210146</td>
-                    <td>Trần Nguyệt Cần</td>
-                    <td>18:00:00</td>
-                    <td>20:00:00</td>
-                    <td>
-                        <a href=""><i style="color: #439a97d0;" class="bi bi-pencil-square"></i></a>
-                        <a href=""><i style="color: #439a97d0;" class="bi bi-x-square"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <th>Event 3</th>
-                    <td>20-06-2022</td>
-                    <td>GCC210017</td>
-                    <td>Ngô Huỳnh Phúc</td>
-                    <td>18:00:00</td>
-                    <td>20:00:00</td>
-                    <td>
-                        <a href=""><i style="color: #439a97d0;" class="bi bi-pencil-square"></i></a>
-                        <a href=""><i style="color: #439a97d0;" class="bi bi-x-square"></i></a>
-                    </td>
+                
                 </tr>
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>
         {# <button class="formbold-btn save">SAVE</button> #}
         {# {{ form_widget(form.save, {'attr':{'class':''} }) }} #}
 
-        {{ form_end(form) }}
+        
 
     {% include 'footer.html.twig' %}
 {% endblock %}

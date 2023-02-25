@@ -31,7 +31,7 @@ class CheckIn
         return $this->activities;
     }
 
-    public function setActivities(?Activities $activities): self
+    public function setActivities(   $activities): self
     {
         $this->activities = $activities;
 

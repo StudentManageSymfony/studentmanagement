@@ -39,6 +39,26 @@ class CheckInRepository extends ServiceEntityRepository
         }
     }
 
+
+    //SELECT ac.name, ac.start_date, ac.start_time, ac.end_time, a.studen_id, a.studen_name FROM check_in c, account a, activities ac WHERE c.activities_id=ac.id and c.account_id=a.id; 
+
+
+    /**
+    * @return CheckIn[] Returns an array of CheckIn objects
+    */
+    public function showCheckInPage(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->select('c.id, ac.Name, ac.StartDate, ac.StartTime, ac.EndTime, a.studenId, a.studenName')
+            ->innerJoin('c.activities', 'ac')
+            ->innerJoin('c.account', 'a')
+            ->getQuery()
+            ->getArrayResult()
+        ;
+    }
+
+
+
 //    /**
 //     * @return CheckIn[] Returns an array of CheckIn objects
 //     */
