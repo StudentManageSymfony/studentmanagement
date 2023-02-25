@@ -106,8 +106,10 @@ button.add:hover::before {
     justify-content: center;
 }
 label.form-label{
-    background-color: #03e9f4;
-    border: 1px solid #2C74B3;
+    background-color: none;
+    padding: 3px;
+    border: 2px solid #2C74B3;
+    border-radius: 3px;
 }
 
    
