@@ -28,30 +28,21 @@
                     <th scope="col">Score</th>
                 </tr>
                 </thead>
+                {% for show in showAttendence %}
+                    
+                
                 <tbody class="table-striped">
                 <tr class="align-middle">
-                    <th scope="row">1</th>
-                    <td>Đặng Minh Đạt</td>
-                    <td>15-10-2023</td>
-                    <td>Hung King Memorial - A spiritual return</td>
-                    <td>14:00</td>
-                    <td>17:00</td>
-                    <td>7</td>
-                </tr>
-                <tr class="align-middle">
-                    <th scope="row">2</th>
-                    <td>Đặng Minh Đạt</td>
-                    <td>17-11-2023</td>
-                    <td>Road to Roadmap</td>
-                    <td>18:00</td>
-                    <td>20:00</td>
-                    <td>10</td>
-                </tr>
-                <tr>
-                    <td colspan="6">Total Score</td>
-                    <td>17</td>
+                    <th scope="row">{{show.id}}</th>
+                    <td>{{show.studenName}}</td>
+                    <td>{{show.StartDate|date('d-m-Y')}}</td>
+                    <td>{{show.Name}}</td>
+                    <td>{{show.StartTime|date('H:i')}}</td>
+                    <td>{{show.EndTime|date('H:i')}}</td>
+                    <td>{{show.Score}}</td>
                 </tr>
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>

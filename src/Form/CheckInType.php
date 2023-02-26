@@ -17,10 +17,7 @@ class CheckInType extends AbstractType
         $builder
             ->add('activities', EntityType::class, ['class'=>Activities::class, 
             'choice_label'=>'Name'])
-
-            // ->add('account', )
-            ->add('submit', SubmitType::class)
-            // ->add('save', SubmitType::class)
+            ->add('Add', SubmitType::class)
         ;
     }
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Account;
+use App\Entity\ActivitiesHistory;
 use App\Entity\CheckIn;
 use App\Form\CheckInType;
 use App\Repository\AccountRepository;
@@ -26,25 +27,17 @@ class CheckinController extends AbstractController
         $form = $this->createForm(CheckInType::class, $checkIn);
         $form->handleRequest($req);
         
-        
         if($form->isSubmitted()&&$form->isValid()){
             //get student id from Form
             $getStudentId = $req->request->get("studentId");
-            //get
-            // $getAccId = $accRepo->findOneBy(['studenId' => $getStudentId]);
-
-            //get object from 
             $accId = $reg->getRepository(Account::class)->findOneBy(['studenId' => $getStudentId]);
             if($accId == null){
-                $error = "Student id does not exist and not alow be null!!!";
+                $error = "Student id does not exist!!!";
                 return $this->render('main/check-in.html.twig', ['error'=>$error, 'form'=>$form->createView(), 'showCheck'=>$showCheckIn]);
             }
 
             $getActivitiesName = $checkIn->getActivities()->getId(); 
             $getActivitiesId = $Activirepo->findOneBy(['id' => $getActivitiesName]);
-
-            
-            // settype($getActivitiesName, "?Activities");
 
             $checkIn->setAccount($accId);
             $checkIn->setActivities($getActivitiesId);
@@ -52,7 +45,6 @@ class CheckinController extends AbstractController
             $repo->save($checkIn, true);
             return $this->redirectToRoute('Check-in', [], Response::HTTP_SEE_OTHER);
 
-            // return $this->json($getAccId);
         }
         return $this->render('main/check-in.html.twig', ['form'=>$form->createView(), 'showCheck'=>$showCheckIn]);
     }
