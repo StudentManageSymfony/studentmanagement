@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Attendance{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('styles/attendance-style.css')}}">
+{% endblock %}
+
+{% block body %}
+        {% include 'header.html.twig' %}
+
+    <div class="heading">
+        <h4>ATTENDANCE</h4>
+    </div>
+
+    <div class="border-table">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead>
+                <tr class="align-middle">
+                    <th scope="col">Index</th>
+                    <th scope="col">Student Name</th>
+                    <th scope="col">Student ID</th>
+                    <th scope="col">Total score</th>
+                </tr>
+                </thead>
+                <tbody class="table-striped">
+                <tr class="align-middle">
+                    <th scope="row">1</th>
+                    <td>Đặng Minh Đạt</td>
+                    <td>GCC210147</td>
+                    <td>7</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+            {% include 'footer.html.twig' %}
+            
+{% endblock %}
+

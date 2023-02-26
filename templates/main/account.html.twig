@@ -31,43 +31,59 @@
             <form class="row g-3">
                 <div class="col-md-6">
                 {% for acc in account %}
-                    
-                    <label for="inputId" class="form-label">Member ID: {{acc.studenId}}</label>
+                    <div class="col-4">Member ID:</div>
+                    <div class="bigcol col-12">
+                        <label for="inputId" class="form-label"> {{acc.studenId}}</label>
+                    </div>
                     {# <input type="email" class="form-control" id="inputId" readonly> #}
                     {# {{ form_widget(account.studenId, {'attr':{'class':'form-control'} }) }} #}
                 </div>
                 <div class="col-md-6">
-                    <label for="inputName" class="form-label">Member Name: {{acc.studenName}}</label>
+                    <div class="col-4">Member Name:</div>
+                    <div class="bigcol col-12">
+                        <label for="inputName" class="form-label"> {{acc.studenName}}</label>
+                    </div>
                     {# <input type="text" class="form-control" id="inputName" readonly> #}
                     {# {{ form_widget(account.studenName, {'attr':{'class':'form-control'} }) }} #}
                     {# {{ form_widget(formname, {'attr':{'type':'text'}, {'class':'form-control'}, {'id':'inputName'}, {'readonly'} }) }} #}
                 </div>
-                <div class="col-6">
-                    <label for="inputEmail" class="form-label">Email: {{acc.email}}</label>
+                <div class="col-md-6">
+                    <div class="col-4">Email:</div>
+                    <div class="bigcol col-12">
+                        <label for="inputEmail" class="form-label"> {{acc.email}}</label>
+                    </div>   
                     {# <input type="email" class="form-control" id="inputEmail" readonly> #}
                     {# {{ form_widget(account.email, {'attr':{'class':'form-control'} }) }} #}
                     {# {{ form_widget(formname, {'attr':{'type':'email'}, {'class':'form-control'}, {'id':'inputEmail'}, {'placeholder':'Ex: datdmgcc21047@fpt.ed.vn'} }) }} #}
                 </div>
-                <div class="col-6">
-                    <label for="inputDate" class="form-label">Date of Birth: {{acc.dateOfBirth|date('d/m/Y')}}</label >
+                <div class="col-md-6">
+                    <div class="col-4">Date of Birth:</div>
+                    <div class="bigcol col-12">
+                        <label for="inputDate" class="form-label"> {{acc.dateOfBirth|date('d/m/Y')}}</label >
+                    </div>
                     {# <input type="date" class="form-control" id="inputDate" readonly> #}
                     {# {{ form_widget(account.dateOfBirth, {'attr':{'class':'form-control'} }) }} #}
                     {# {{ form_widget(formname, {'attr':{'type':'date'}, {'class':'form-control'}, {'id':'inputDate'} }) }} #}
                 </div>
                 <div class="col-6">
-                    <label for="inputMajor" class="form-label">Major: {{acc.major}}</label>
+                    <div class="col-4">Major:</div>
+                    <div class="bigcol col-12">
+                        <label for="inputMajor" class="form-label"> {{acc.major}}</label>
                     {# <input type="text" class="form-control" id="inputMajor" readonly> #}
                     {# {{ form_widget(account.major, {'attr':{'class':'form-control'} }) }} #}
+                    </div>
                 </div>
                 <!-- Check -->
                 <div class="check col-md-6">
-                {% if acc.gender == true %}
-                <label for="inputGender" class="form-label">Gender: Male</label>
-                {# <input type="text" class="form-control" id="inputGender" readonly> #}
-                {% else %}
-                <label for="inputGender" class="form-label">Gender: Female</label>
-                {% endif %}
-
+                <div class="col-4">Gender:</div>
+                    <div class="bigcol col-12">
+                        {% if acc.gender == true %}
+                        <label for="inputGender" class="form-label"> Male</label>
+                        {# <input type="text" class="form-control" id="inputGender" readonly> #}
+                        {% else %}
+                        <label for="inputGender" class="form-label"> Female</label>
+                        {% endif %}
+                    </div>
                 {% endfor %}
                 </div>
             </form>
