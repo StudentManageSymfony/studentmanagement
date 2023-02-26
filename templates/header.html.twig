@@ -58,7 +58,10 @@
                         <a href="/members" class="nav-link" style="color: #ffffff;">Members</a>
                         <a class="nav-link" href="/check-in" style="color: #ffffff;">Check-in</a>
                     {% endif %}
+                    <a class="nav-link" href="/attendance/{{app.user.userIdentifier }}" style="color: #ffffff;">Attendance</a>
+                    {# {% if is_granted("ROLE_ADMIN") %}
                     <a class="nav-link" href="/attendance" style="color: #ffffff;">Attendance</a>
+                    {% endif %} #}
                     <a class="nav-link" href="/activities"style="color: #ffffff;">Activities</a>
                     <a class="nav-link" href="/account/{{app.user.userIdentifier }}"style="color: #ffffff;">Account</a>
                 </div>

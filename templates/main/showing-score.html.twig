@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Attendance{% endblock %}
+{% block title %}Show Score{% endblock %}
 
 
 {% block stylesheets %}
@@ -11,7 +11,7 @@
         {% include 'header.html.twig' %}
 
     <div class="heading">
-        <h4>ATTENDANCE</h4>
+        <h4>TOTAL SCORE</h4>
     </div>
 
     <div class="border-table">
@@ -25,14 +25,16 @@
                     <th scope="col">Total score</th>
                 </tr>
                 </thead>
+                {% for score in showScore %}
                 <tbody class="table-striped">
                 <tr class="align-middle">
-                    <th scope="row">1</th>
-                    <td>Đặng Minh Đạt</td>
-                    <td>GCC210147</td>
-                    <td>7</td>
+                    <th scope="row">{{score.id}}</th>
+                    <td>{{score.studenName}}</td>
+                    <td>{{score.studenId}}</td>
+                    <td>{{score.totalScore}}</td>
                 </tr>
                 </tbody>
+                {% endfor %}
             </table>
         </div>
     </div>

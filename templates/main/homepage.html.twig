@@ -104,7 +104,14 @@
         <div class="row">
     {% for show in showClub %}
         <div class="col-md-4 mb-3 mb-lg-0 py-4">
-            <div class="hover hover-3 text-white rounded"><img src="../images/z4134104443236_302f601d0285eb69d4bdb4bb69c355d7.jpg" alt="">
+            <div class="hover hover-3 text-white rounded">
+            {# <img src="../images/z4134104443236_302f601d0285eb69d4bdb4bb69c355d7.jpg" alt=""> #}
+            {% set img = show.image %}
+            {% if img %}
+                <img src="{{asset('images/'~img) }}">
+            {% else %}
+                <img src="../images/111.jpg">
+            {% endif %}
             <div class="hover-overlay"></div>
             <div class="hover-3-content px-5 py-4">
                 <h3 class="hover-3-title text-uppercase font-weight-bold mb-0" style="font-weight: 600;"> <span class="font-weight-light"></span>{{show.clubName}}</h3>

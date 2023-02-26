@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class ClubController extends AbstractController
 {
@@ -25,12 +27,20 @@ class ClubController extends AbstractController
     /**
      * @Route("/adding-clubs", name="Adding-clubs")
      */
-    public function addingClubAction(ClubsRepository $repo, Request $req): Response
+    public function addingClubAction(ClubsRepository $repo, Request $req, SluggerInterface $slugger): Response
     {
         $addClub = new Clubs();
         $form = $this->createForm(ClubType::class, $addClub);
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
+
+            $imgFile = $form->get('file')->getData();
+            if($imgFile){
+                $newFileName = $this->uploadImage($imgFile, $slugger);
+                $addClub->setImage($newFileName);
+            }
+
+
             $repo->save($addClub, true);
             return $this->redirectToRoute('Club');
         }
@@ -40,11 +50,16 @@ class ClubController extends AbstractController
     /**
      * @Route("/editClub/{id}", name="EditClub")
      */
-    public function editClubAction(ClubsRepository $repo, Request $req, Clubs $id): Response
+    public function editClubAction(ClubsRepository $repo, Request $req, Clubs $id, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ClubType::class,$id);
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
+            $imgFile = $form->get('file')->getData();
+            if($imgFile){
+                $newFileName = $this->uploadImage($imgFile, $slugger);
+                $id->setImage($newFileName);
+            }
             $repo->save($id, true);
             return $this->redirectToRoute('Club');
             $id->getId();
@@ -71,4 +86,21 @@ class ClubController extends AbstractController
     //     $club = $repo->findClubId($id);
     //     return $this->json($club);
     // }
+
+
+    //function to rename image file and upload it to images folder
+    public function uploadImage($imgFile, SluggerInterface $slugger):?string{
+        $originalFileName = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFileName = $slugger->slug($originalFileName);
+        $newFileName = $safeFileName.'-'.uniqid().'.'.$imgFile->guessExtension();
+        try{
+            $imgFile->move(
+                $this->getParameter('image_dir'),
+                $newFileName
+            );
+        }catch(FileException $e){
+            echo $e;
+        }
+        return $newFileName;
+    }
 }

@@ -54,6 +54,16 @@
                     </div>
                 </div>
 
+                <div class="formbold-input-flex description">
+                    <div>
+                        <label for="" class="formbold-form-label"> Poster: </label>
+                        {# <input type="text" name="" id="" class="formbold-form-input"/> #}
+                        {{ form_widget(form.file, {'attr':{'class':'form-control'} }) }}
+                        {{ form_widget(form.image, {'attr':{'class':'form-control'} }) }}
+                        {% set img = form.image.vars.value %}
+                    </div>
+                </div>
+
                 <div class="formbold-btn">
                 {# <button class="formbold-btn" style="font-size: 20px;"> Submit </button> #}
                         {{ form_widget(form.submit, {'attr':{'class':'formbold-btn'} }) }}

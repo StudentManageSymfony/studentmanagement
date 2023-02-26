@@ -30,12 +30,24 @@ class RegistrationController extends AbstractController
                     $form->get('password')->getData()
                 )
             );
-            $account->setRoles(['ROLE_USER']);
+            $getData = $req->request->get('role');
+            if($getData == "user"){
+                $account->setRoles(['ROLE_USER']);
 
-            $entityManager->persist($account);
-            $entityManager->flush();
+                $entityManager->persist($account);
+                $entityManager->flush();
 
-            return $this->redirectToRoute('AddAcc'); 
+                return $this->redirectToRoute('AddAcc'); 
+            }
+            elseif($getData == "admin"){
+                $account->setRoles(['ROLE_ADMIN']);
+
+                $entityManager->persist($account);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('AddAcc'); 
+            }
+            
         }
         return $this->render('main/adding-account.html.twig', ['form'=> $form->createView() ]);
     }

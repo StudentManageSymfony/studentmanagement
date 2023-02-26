@@ -32,7 +32,6 @@ use Symfony\Component\Form\FormBuilderInterface;
             ->add('club', EntityType::class, [
                 'class'=>Clubs::class, 
                 'choice_label'=>'clubName',
-                'empty_data' => ''
             ])
             ->add('Submit', SubmitType::class)
 

@@ -95,6 +95,7 @@ class ActivitiesController extends AbstractController
             }
             $repo->save($id, true);
             return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
+            $id->getId();
         }
         return $this->render('main/adding-activities.html.twig', ['form'=>$form->createView()]);
     }
