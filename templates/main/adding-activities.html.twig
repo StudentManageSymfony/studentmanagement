@@ -63,6 +63,8 @@
                     <label for="" class="formbold-form-label"> Score: </label>
                     {# <input type="number" min="1" max="20" name="" id="" placeholder="Ex: 7" class="formbold-form-input"/> #}
                     {{ form_widget(form.Score, {'attr':{'class':'formbold-form-input'} }) }}
+                    {# <span style="color:red;">{{valid ?? ""}}</span> #}
+                    {{ form_errors(form.Score) }}
                 </div>
             </div> 
             <div class="formbold-form-label">

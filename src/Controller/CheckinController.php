@@ -28,26 +28,32 @@ class CheckinController extends AbstractController
         $form->handleRequest($req);
         
         if($form->isSubmitted()&&$form->isValid()){
-            //get student id from Form
+
+            //get activities id from form
+            $getActivitiesName = $checkIn->getActivities()->getId(); 
+            $getActivitiesId = $Activirepo->findOneBy(['id' => $getActivitiesName]);
+
+            //get account id from student id
             $getStudentId = $req->request->get("studentId");
             $accId = $reg->getRepository(Account::class)->findOneBy(['studenId' => $getStudentId]);
             if($accId == null){
                 $error = "Student id does not exist!!!";
                 return $this->render('main/check-in.html.twig', ['error'=>$error, 'form'=>$form->createView(), 'showCheck'=>$showCheckIn]);
-            }
-
-            $getActivitiesName = $checkIn->getActivities()->getId(); 
-            $getActivitiesId = $Activirepo->findOneBy(['id' => $getActivitiesName]);
+            }else{
 
             $checkIn->setAccount($accId);
             $checkIn->setActivities($getActivitiesId);
 
             $repo->save($checkIn, true);
             return $this->redirectToRoute('Check-in', [], Response::HTTP_SEE_OTHER);
+        }
 
         }
         return $this->render('main/check-in.html.twig', ['form'=>$form->createView(), 'showCheck'=>$showCheckIn]);
     }
+
+
+
 
     
     /**

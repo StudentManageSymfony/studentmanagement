@@ -35,7 +35,7 @@ class MemberController extends AbstractController
         // $getDataClub = $req->query->get("clubName");
         $test = $repo->checkStudentId($getDataMember);
         if(count($test)!=0){
-            $error = "Your student ID is valuable";
+            $error = "Your student ID is available";
             return $this->render('main/check-members.html.twig', [
                 'error'=>$error
             ]);      

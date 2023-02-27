@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ActivitiesRepository::class)]
 class Activities
@@ -20,6 +21,8 @@ class Activities
     private ?string $Name = null;
 
     #[ORM\Column]
+    #[Assert\Positive]
+    #[Assert\LessThan(value: 26,)]
     private ?int $Score = null;
 
     #[ORM\Column(length: 255, nullable: true)]
