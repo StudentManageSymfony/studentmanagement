@@ -37,12 +37,13 @@
                         <label for="" class="formbold-form-label"> Number of Members: </label>
                         {# <input type="" name="" id="" placeholder="Ex: 30"class="formbold-form-input"/> #}
                         {{ form_widget(form.numberOfMembers, {'attr':{'class':'formbold-form-input'} }) }}
-                        
+                        {{ form_errors(form.numberOfMembers) }}
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label"> Leader: </label>
                         {# <input type="text" name="" id="" placeholder="Ex: Nguyễn Văn A" class="formbold-form-input"/> #}
                         {{ form_widget(form.leaderName, {'attr':{'class':'formbold-form-input'} }) }}
+                        
                     </div>
                 </div>  
 
@@ -61,6 +62,7 @@
                         {{ form_widget(form.file, {'attr':{'class':'form-control'} }) }}
                         {{ form_widget(form.image, {'attr':{'class':'form-control'} }) }}
                         {% set img = form.image.vars.value %}
+                        {{ form_errors(form.image) }}
                     </div>
                 </div>
 

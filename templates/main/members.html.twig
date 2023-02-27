@@ -28,12 +28,13 @@
             {# {{ form_end(formname) }} #}
         </div>
     </div>
+    <div class="quantity">Number of members: <span style="color:#2C74B3">{{showMember|length}}</span></div>
     <div class="border-table">
         <div class="table-responsive">
             <table class="table table-hover align-middle">
                 <thead>
                 <tr class="align-middle">
-                    <th scope="col">Index</th>
+                    {# <th scope="col">Index</th> #}
                     <th scope="col">Image</th>
                     <th scope="col">Member ID</th>
                     <th scope="col">Member Name</th>
@@ -44,10 +45,10 @@
                 </tr>
                 </thead>
                 {% for show in showMember %}
-    
+                
                 <tbody class="table-striped">
                 <tr class="align-middle">
-                    <th scope="row">{{show.id}}</th>
+                    {# <th scope="row">{{show.id}}</th> #}
                     <td>
                     {% set img = show.image %}
                     {% if img %}

@@ -113,6 +113,7 @@ label.form-label{
     padding: 5px 30px 5px 30px;
     border: 1px solid #2C74B3;
     border-radius: 8px;
+    box-shadow: 4px 6px #00000016;
 }
 
 

@@ -94,3 +94,16 @@ div.row.g-3{
     padding: 30px 30px 30px 30px;
     margin: 30px 50px 30px 50px;
 }
+
+div.check{
+    width: 100%;
+    padding: 6px 22px;
+    border-radius: 5px;
+    border: 1px solid #DDE3EC;
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    color: #07074D;
+    outline: none;
+    resize: none;
+}

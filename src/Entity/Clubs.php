@@ -24,9 +24,9 @@ class Clubs
     #[ORM\Column(length: 40)]
     private ?string $clubName = null;
 
-    /**
-     * @Assert\GreaterThan(15)
-     */
+    #[Assert\GreaterThanOrEqual(
+        value: 15,
+    )]
     #[ORM\Column]
     private ?int $numberOfMembers = null;
 

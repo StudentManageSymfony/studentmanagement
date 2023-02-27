@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ClubController extends AbstractController
 {
@@ -27,7 +28,7 @@ class ClubController extends AbstractController
     /**
      * @Route("/adding-clubs", name="Adding-clubs")
      */
-    public function addingClubAction(ClubsRepository $repo, Request $req, SluggerInterface $slugger): Response
+    public function addingClubAction(ClubsRepository $repo, Request $req, SluggerInterface $slugger, ValidatorInterface $valid): Response
     {
         $addClub = new Clubs();
         $form = $this->createForm(ClubType::class, $addClub);
@@ -39,7 +40,11 @@ class ClubController extends AbstractController
                 $newFileName = $this->uploadImage($imgFile, $slugger);
                 $addClub->setImage($newFileName);
             }
-
+            $e = $valid->validate($form);
+            if(count($e)>0){
+                $e_str = (string) $e;
+                return new Response($e_str);
+            }
 
             $repo->save($addClub, true);
             return $this->redirectToRoute('Club');
