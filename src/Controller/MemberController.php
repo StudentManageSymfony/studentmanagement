@@ -58,6 +58,10 @@ class MemberController extends AbstractController
         
         //get Student name fron stdID
         $accountObj = $account->findOneBy(['studenId'=>$stdID]);
+        if($accountObj==null){
+            $error = "Student id does not exist in database";
+            return $this->render('main/check-members.html.twig', ['error'=>$error]);
+        }
         $stdName =$accountObj->getStudenName();
         // //get Account ID from stdID
         $accountId = $accountObj->getId();

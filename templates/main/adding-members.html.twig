@@ -38,7 +38,7 @@
                     <div>
                         <label for="lastname" class="formbold-form-label"> Member Name: </label>
                         
-                        <input type="text" name="memberName" id="lastname" placeholder="Ex Nguyễn Văn A" class="formbold-form-input"
+                        <input type="text" name="memberName" id="lastname"  class="formbold-form-input"
                         value="{{studentName}}"/>
                         
                     </div>
@@ -66,10 +66,7 @@
                     {# {{ form_widget(formname, {'attr':{'type':'file'}, {'class':'form-control'}, {'id':'Pro_image'}, {'value':''}, {'name':'Pro_image'} }) }} #}
                 </div>
 
-                <div class="formbold-btn"> {{ form_widget(form.submit, {'attr':{'class':''}}) }} </div>
-                {# <div class="formbold-btn"> #}
-                    
-                {# </div> #}
+                <div class="formbold-btn"> {{ form_widget(form.submit, {'attr':{'class':'formbold-btn'}}) }} </div>
                 
             {# </form> #}
             {{ form_end(form) }}

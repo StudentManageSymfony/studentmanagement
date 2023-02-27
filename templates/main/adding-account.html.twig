@@ -2,7 +2,7 @@
 {% block title %}Adding Account{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{asset('styles/attendance-style.css')}}">
+    <link rel="stylesheet" href="{{asset('styles/adding-account-style.css')}}">
     
 {% endblock %}
 
@@ -50,9 +50,9 @@
                     {# <input type="password" class="form-control" id="inputPass"> #}
                     {{ form_widget(form.password, {'attr':{'class':'form-control'} }) }}
                 </div>
-                <div class="check col-md-6">
+                <div class="col-md-6 role-combobox">
                     <label for="" class="formbold-form-label"> Role: </label>
-                    <select name="role" id="role">
+                    <select name="role" id="role" class="role">
                         <option value="admin">Admin</option>
                         <option value="user">Members</option>
                     </select>
@@ -61,11 +61,13 @@
                 </div>
 
                 <!-- Check -->
-                <div class="check col-md-6">
-                    Gender
+                <div class="col-md-6">
+                    <label for="" class="formbold-form-label"> Gender: </label>
+                    <br>
                     {{ form_widget(form.gender, {'attr':{'class':'check'} }) }}
                 </div>
-                {{ form_widget(form.submit, {'attr':{'class':''} }) }}
+                
+                <div class="button">{{ form_widget(form.submit, {'attr':{'class':'button'} }) }}</div>
                 {# <span style="color:green;">{{noti}}</span> #}
             {# </form> #}
             {{ form_end(form) }}

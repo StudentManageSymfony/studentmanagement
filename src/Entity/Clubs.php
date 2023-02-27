@@ -18,21 +18,29 @@ class Clubs
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 5)]
     #[ORM\Column(length: 10)]
     private ?string $clubId = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3)]
     #[ORM\Column(length: 40)]
     private ?string $clubName = null;
 
     #[Assert\GreaterThanOrEqual(
         value: 15,
     )]
+    #[Assert\NotBlank]
     #[ORM\Column]
     private ?int $numberOfMembers = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 10)]
     #[ORM\Column(length: 40)]
     private ?string $leaderName = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
