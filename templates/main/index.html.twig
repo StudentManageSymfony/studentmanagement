@@ -23,7 +23,7 @@
         <form method="post">
         {# {{ form_start(index_form) }} #}
         {% if error %}
-          <div class="alert alert-danger">{{error.messageKey|trans(error.messsageData, 'security')}}</div>
+          <div class="alert alert-danger">{{error.messageKey|trans(error.messageData, 'security')}}</div>
         {% endif %}
 
           <div class="user-box">
