@@ -6,6 +6,7 @@ use App\Repository\ClubsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use function PHPUnit\Framework\isNull;
 
@@ -23,6 +24,9 @@ class Clubs
     #[ORM\Column(length: 40)]
     private ?string $clubName = null;
 
+    /**
+     * @Assert\GreaterThan(15)
+     */
     #[ORM\Column]
     private ?int $numberOfMembers = null;
 
