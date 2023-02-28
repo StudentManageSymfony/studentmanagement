@@ -115,7 +115,9 @@ label.form-label{
     border-radius: 8px;
     box-shadow: 4px 6px #00000016;
 }
-
+.heading h4{
+    font-weight: 700 !important;
+}
 
    
    

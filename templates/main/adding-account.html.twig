@@ -25,6 +25,7 @@
                     <label for="inputId" class="form-label">Member ID</label>
                     {# <input type="email" class="form-control" id="inputId"> #}
                     {{ form_widget(form.studenId, {'attr':{'class':'form-label'} }) }}
+                    {{ form_errors(form.studenId) }}
                 </div>
                 <div class="col-md-3">
                     <label for="inputName" class="form-label">Member Name</label>
@@ -44,6 +45,7 @@
                     <label for="inputEmail" class="form-label">Email</label>
                     {# <input type="email" class="form-control" id="inputEmail" placeholder="Ex: datdmgcc21047@fpt.ed.vn"> #}
                     {{ form_widget(form.email, {'attr':{'class':'form-label'} }) }}
+                    {{ form_errors(form.email) }}
                 </div>
                 <div class="col-md-6">
                     <label for="inputPass" class="form-label">Password</label>

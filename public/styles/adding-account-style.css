@@ -114,3 +114,6 @@ nav.navbar{
     outline: none;
     resize: none;
 }
+.heading h4{
+    font-weight: 700 !important;
+}

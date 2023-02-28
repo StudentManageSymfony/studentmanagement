@@ -95,3 +95,6 @@ button.add:hover::before {
     left: 50%;
     transform: translateX(-50%);
 }
+h4{
+    font-weight: 700 !important;
+}

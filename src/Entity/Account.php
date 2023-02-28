@@ -9,6 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AccountRepository::class)]
 class Account implements UserInterface, PasswordAuthenticatedUserInterface
@@ -18,6 +19,9 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Email(
+        message: 'The email {{ value }} is not a valid email.',
+    )]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -30,6 +34,10 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[Assert\Length(
+        min: 9,
+        minMessage: 'Student ID must be {{ limit }} characters long',
+    )]    
     #[ORM\Column(length: 9)]
     private ?string $studenId = null;
 
