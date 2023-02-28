@@ -53,6 +53,7 @@ class ActivitiesRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->select('c.clubName, a.Score, a.Image, a.StartDate, a.StartTime, a.EndTime, a.Name, a.id')
             ->innerJoin('a.club', 'c')
+            ->orderBy('a.id', 'DESC')
             ->getQuery()
             ->getArrayResult()
         ;

@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\Time;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class ActivitiesController extends AbstractController
 {
@@ -80,18 +79,12 @@ class ActivitiesController extends AbstractController
     /**
      * @Route("/editActivities/{id}", name="EditActivities")
      */
-    public function editActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id, SluggerInterface $slugger, ValidatorInterface $validate): Response
+    public function editActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(ActivitiesFormType::class, $id);
 
         $form->handleRequest($req);
         if($form->isSubmitted()&&$form->isValid()){
-
-            $valid = $validate->validate($form);
-            if(count($valid) > 0){
-                $validString = (string) $valid;
-                return new Response($validString);
-            }else{
             $imgFile = $form->get('file')->getData();
             $clubId = $id->getClub();
 
@@ -102,8 +95,6 @@ class ActivitiesController extends AbstractController
             }
             $repo->save($id, true);
             return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
-            $id->getId();
-        }
         }
         return $this->render('main/adding-activities.html.twig', ['form'=>$form->createView()]);
     }
@@ -115,10 +106,10 @@ class ActivitiesController extends AbstractController
      */
     public function deleteActivitiesAction(ActivitiesRepository $repo, Request $req, Activities $id): Response
     {
+        
             $repo->remove($id, true);
             return $this->redirectToRoute('Activities', [], Response::HTTP_SEE_OTHER);
             $id->getId();
     }
-
 
 }
